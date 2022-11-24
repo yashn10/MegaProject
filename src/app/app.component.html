@@ -1,0 +1,21 @@
+<div class="container-fluid" style="text-align: center;">
+
+    <div class="row">
+        <div class="col-12">
+            <h1>Train Booking System</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6" style="font-size: 20px;">
+            <h4> Train NAME :- {{trainName}} </h4>
+            <h4> Tickets Available :- {{availTickets}} </h4>
+        </div>
+
+        <div class="col-6">
+            <button type="button" class="btn btn-success" (click)="bookticket()">Book Tickets</button>
+            <button type="button" class="btn btn-danger" (click)="cancelticket()">Cancel Tickets</button>
+        </div>
+    </div>
+
+</div>
