@@ -1,0 +1,164 @@
+<div class="container-fluid" style="margin-top: 50px;">
+
+
+    <section>
+
+        <div class="container1">
+            <img src="../assets/img/Back.jpg" class="mx-auto d-block img-fluid" style="width:100%">
+        </div>
+
+        <div class="container-fluid d-flex flex-wrap" style="background-color: #e6e9fe; height: 350px;">
+            <div class="row d-flex p-2 flex-wrap">
+                <div class="container col-lg-6 col-sm-12 col-md-6 my-5" style="padding: 10px 50px;">
+                    <h2>No need to Afraid to Donate Blood </h2>
+                    <h5 class="my-4"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#0d31f0"
+                            class="bi bi-play-fill mx-1" viewBox="0 0 16 16">
+                            <path
+                                d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z">
+                            </path>
+                        </svg>Donating blood increase your blood production rate.</h5>
+                    <h5 class="my-4"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#0d31f0"
+                            class="bi bi-play-fill mx-1" viewBox="0 0 16 16">
+                            <path
+                                d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z">
+                            </path>
+                        </svg>Help the People who needs Blood.</h5>
+                    <h5 class="my-4"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#0d31f0"
+                            class="bi bi-play-fill mx-1" viewBox="0 0 16 16">
+                            <path
+                                d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z">
+                            </path>
+                        </svg>Your Contribute to save someones life.</h5>
+                </div>
+                <div class="container col-lg-6 col-sm-12 col-md-6 my-4 bg-light"
+                    style="border-radius: 1rem; font-size: 1.125rem; padding: 20px 40px; text-align: justify;">
+                    <p class="my-3" style="font-weight: 500;"> One of the factor of the public afraid to donate their
+                        blood is
+                        they believe in myths. The myths that
+                        they always
+                        believe are, if they donate their blood they will become fat and if they donate their blood,
+                        their blood
+                        will
+                        become
+                        less in total of amount and they will become pale.The percentage of people donating blood is
+                        increasing day
+                        by
+                        day due to awareness to donate blood for those
+                        needed.The blood received have to be managed thoroughly so that there will be no negative effect
+                        to the
+                        blood
+                        receiver once they received blood.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="container-fluid py-3 flex-wrap" style="color: red; background: hsl(187, 100%, 51%);">
+        <header class="text-center">
+            <h1 class="display-6" style="font-weight: bold;">Blood Donor Registration Form</h1>
+        </header>
+    </div>
+
+
+    <div class="container-fluid blood" style="background-image: url(../assets/img/formbg.jpg);">
+        <section class="row fs-4 text-dark p-4"
+            style="background: hsla(190, 13%, 91%, 0.76); border-radius:2rem ;position: relative; justify-content: center;">
+            <div class="container my-2">
+                <form #userForm="ngForm" (ngSubmit)="addDonor(userForm.value)" class="row g-3 p-3 "
+                    style="border-radius: 2rem;">
+                    <div class="col-lg-4 col-md-4 col-sm-12">
+                        <label for="validationDefault01" class="form-label">First name:</label>
+                        <input type="text" class="form-control" id="validationDefault01" ngModel name="firstname"
+                            required="">
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12">
+                        <label for="validationDefault02" class="form-label">Middle name:</label>
+                        <input type="text" class="form-control" id="validationDefault02" ngModel name="middlename"
+                            required="">
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12">
+                        <label for="validationDefault02" class="form-label">Last name:</label>
+                        <input type="text" class="form-control" id="validationDefault02" ngModel name="lastname"
+                            required="">
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 mt-3">
+                        <label for="inputEmail4" class="form-label">Email:</label>
+                        <input type="email" class="form-control" id="inputEmail4" ngModel name="email">
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 mt-3">
+                        <label for="inputNumber" class="form-label">Phone No:</label>
+                        <input type="text" class="form-control" id="inputPassword4" ngModel name="phone">
+                    </div>
+                    <div class="col-12 mt-3">
+                        <label for="inputAddress" class="form-label">Address:</label>
+                        <input type="text" class="form-control" id="inputAddress" placeholder="Enter your address"
+                            ngModel name="address">
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12 mt-3">
+                        <label for="inputDob" class="form-label">DOB:</label>
+                        <input type="date" class="form-control" ngModel name="DOB">
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12 mt-3" style="display: grid;">
+                        <label for="inputState" class="form-label">Blood Group:</label>
+                        <select id="inputState" class="form-select" ngModel name="bloodgroup"
+                            style="height: 40px; border-radius: 5px;">
+                            <option>A+(Positive)</option>
+                            <option>A-(Negative)</option>
+                            <option>B+(Positive)</option>
+                            <option>B-(Negative)</option>
+                            <option>AB+(Positive)</option>
+                            <option>AB-(Negative)</option>
+                            <option>O+(Positive)</option>
+                            <option>O-(Negative)</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12 mt-3">
+                        <label for="inputEmail4" class="form-label">Your City:</label>
+                        <input type="text" class="form-control" id="inputEmail4" ngModel name="city">
+                    </div>
+                    <div class="col-6 mt-3">
+                        <label for="inputGender" class="form-label mr-2">Gender:</label>
+                        <select id="inputGender" class="form-select" ngModel name="gender"
+                            style="height: 30px; border-radius: 5px;">
+                            <option>Male</option>
+                            <option>Female</option>
+                        </select>
+                    </div>
+                    <div class="col-6 mt-3">
+                        <label for="inputDieseas" class="form-label mr-2">Any Dieseas:</label>
+                        <select id="inputDieseas" class="form-select" ngModel name="anydisease"
+                            style="height: 30px; border-radius: 5px;">
+                            <option (click)="yes()">Yes</option>
+                            <option>No</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 md-form md-outline mt-3" *ngIf="diseaseyes == 'yes'">
+                        <textarea id="message" class="md-textarea form-control" rows="3" ngModel
+                            name="disease"></textarea>
+                        <label for="message">Mention your disease</label>
+                    </div>
+                    <!-- <div class="col-6 mt-3">
+                        <div class="form-check mt-2">
+                            <input class="form-check-input" type="checkbox" id="gridCheck" name="accept">
+                            <label class="form-check-label ml-4" for="gridCheck">
+                                Accept T&amp;C
+                            </label>
+                        </div>
+                    </div> -->
+                    <div class="col-12 mt-3">
+                        <button type="submit" class="btn btn-primary"
+                            style="width: 10%; height: 150%; font-weight: 500; font-size: large;">Register</button>
+                        <button class="btn btn-dark ml-2"
+                            style="width: 10%; height: 150%; font-weight: 500; font-size: large;">Clear</button>
+                    </div>
+                    <p class="mt-4" style="display: flex; width: 30%;">Not Loggedin? Login here
+                        <a class="nav-link ml-2" href="login" style="font-weight: 500; font-size: large;">Login</a>
+                    </p>
+                </form>
+            </div>
+        </section>
+    </div>
+
+
+</div>

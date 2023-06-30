@@ -1,0 +1,202 @@
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #e8f1ec, #7bc49f, #4bb397);
+}
+
+.Medicine {
+    margin-top: 60px;
+}
+
+.search {
+    margin-bottom: auto;
+    margin-top: 200px;
+    height: 70px;
+    background-color: #fff;
+    padding: 10px;
+}
+
+.search-input {
+    color: white;
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 0;
+    margin-top: 5px;
+    caret-color: transparent;
+    line-height: 40px;
+    transition: width 0.4s linear;
+}
+
+.search .search-input {
+    padding: 0 10px;
+    width: 550px;
+    caret-color: #536bf6;
+    font-size: 21px;
+    font-weight: 300;
+    color: black;
+    transition: width 0.4s linear;
+}
+
+.search:hover>.search-icon {
+    background: #1A237E;
+    color: #fff;
+}
+
+.search-icon {
+
+    height: 50px;
+    width: 50px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: #536bf6;
+
+}
+
+a:link {
+    text-decoration: none;
+}
+
+
+body {
+    font-family: Arial;
+    font-size: 17px;
+    background: linear-gradient(135deg, #e8f1ec, #7bc49f, #4bb397);
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin: 0 20px;
+}
+
+
+.col-25 {
+    -ms-flex: 25%;
+    flex: 25%;
+}
+
+
+.col-50 {
+    -ms-flex: 50%;
+    flex: 50%;
+}
+
+
+.col-75 {
+    -ms-flex: 75%;
+    flex: 75%;
+}
+
+
+.col-25,
+.col-50,
+.col-75 {
+    padding: 0 16px;
+}
+
+
+.Cart {
+    background-color: #f2f2f2;
+    padding: 5px 20px 15px 20px;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+}
+
+
+input[type=text] {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+
+label {
+    margin-bottom: 10px;
+    display: block;
+}
+
+
+.icon-container {
+    margin-bottom: 20px;
+    padding: 7px 0;
+    font-size: 24px;
+}
+
+
+.btn {
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+
+.btn:hover {
+    background-color: #097a0f;
+}
+
+
+a {
+    color: #2196F3;
+}
+
+
+hr {
+    border: 1px solid lightgrey;
+    // margin-top: 0;
+    // margin-bottom: 0;
+}
+
+
+span.price {
+    float: right;
+    color: grey;
+}
+
+
+@media (max-width: 800px) {
+    .row {
+        flex-direction: column-reverse;
+    }
+
+    .col-25 {
+        margin-bottom: 20px;
+    }
+}
+
+
+.order .title {
+    font-size: 25px;
+    font-weight: 500;
+    position: relative;
+}
+
+
+.order .title::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 5px;
+    width: 210px;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #084132, #3ff01b, #a0b6a0);
+}

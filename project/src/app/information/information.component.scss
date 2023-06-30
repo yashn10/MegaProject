@@ -1,0 +1,33 @@
+.img {
+    height: 380px;
+    background-image: linear-gradient(to left, rgba(178, 178, 66, 0.2), rgba(178, 178, 66, 0.2));
+    background-size: cover;
+}
+
+img {
+    height: 380px;
+    width: 100%;
+}
+
+table td {
+    padding: .35rem;
+    background: linear-gradient(to left, rgba(178, 178, 66, 0.2), rgba(178, 178, 66, 0.2));
+}
+
+.container p {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    text-align: left;
+}
+
+.container ul li {
+    font-family: 'Roboto', sans-serif;
+    line-height: 30px;
+    font-weight: 700;
+}
+
+.container h4 {
+    font-style: italic;
+    font-weight: 700;
+    font-size: 1.5rem;
+}

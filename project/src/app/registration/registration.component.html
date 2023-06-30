@@ -1,0 +1,68 @@
+<body class="row" style="margin-top: 50px;">
+
+
+    <div class="col-lg-6 col-sm-12">
+        <img class="img-fluid" style="width: 100%;" src="../assets/img/reg.jpg">
+    </div>
+
+
+    <div class="col-lg-6 col-sm-12">
+        <div class="container">
+            <div class="title">Registration</div>
+            <div class="content">
+                <form #userForm="ngForm" (ngSubmit)="addUser(userForm.value)">
+                    <div class="user-details">
+                        <div class="input-box">
+                            <span class="details">Full Name:</span>
+                            <input type="text" placeholder="Enter your name" ngModel name="fullname" required="">
+                        </div>
+                        <div class="input-box">
+                            <span class="details">Username:</span>
+                            <input type="text" placeholder="Enter your username" ngModel name="username" required="">
+                        </div>
+                        <div class="input-box">
+                            <span class="details">Age:</span>
+                            <input type="text" placeholder="Enter your age" ngModel name="age" required="">
+                        </div>
+                        <div class="input-box">
+                            <span class="details">Blood Group:</span>
+                            <input type="text" placeholder="Enter your blood Group" ngModel name="bloodgroup"
+                                required="">
+                        </div>
+                        <div class="input-box">
+                            <span class="details">Email:</span>
+                            <input type="text" placeholder="Enter your email" ngModel name="email" required="">
+                        </div>
+                        <div class="input-box">
+                            <span class="details">Phone Number:</span>
+                            <input type="text" placeholder="Enter your number" ngModel name="phone" required="">
+                        </div>
+                        <div class="input-box">
+                            <span class="details">Password:</span>
+                            <input type="text" placeholder="Enter your password" ngModel name="password" required="">
+                        </div>
+                        <div class="input-box">
+                            <span for="inputState" class="form-label gender-title">Gender:</span>
+                            <select id="inputState" class="form-select" ngModel name="gender">
+                                <option>Male</option>
+                                <option>Female</option>
+                                <option>Prefered not to say</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="button col-lg-4 col-md-6 col-sm-12 mt-3">
+                            <input type="submit" value="Register">
+                        </div>
+                        <div class="login_link col-lg-8 col-md-6 col-sm-12 mt-4">
+                            Already a member? Login here <a href="login">Login</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</body>

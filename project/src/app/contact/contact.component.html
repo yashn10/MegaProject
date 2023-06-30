@@ -1,0 +1,52 @@
+<div class="row"
+    style="background-image: url(../assets/img/contact.jpg); background-size: cover; background-position: center; background-attachment: fixed; height: 800px; margin-top: 50px;">
+    <div class="rgba-black-strong rounded p-5" style="width: 100%; background-color: rgba(0, 0, 0, 0.6);">
+        <h3 class="text-center font-weight-bold text-white mt-3 mb-2">Contact Us</h3>
+        <hr>
+        <form class="mx-md-5 mt-5">
+            <div class="row">
+                <div class="col-md-6 mb-4" style="padding-left: 90px;">
+                    <div class="card">
+                        <div class="card-body px-4" style="background-color: #a7a6a6">
+                            <form #userForm="ngForm" (ngSubmit)="addUser(userForm.value)">
+                                <div class="md-form md-outline mt-0">
+                                    <input type="text" id="name" class="form-control" ngModel name="name">
+                                    <label for="name">Your Name</label>
+                                </div>
+                                <div class="md-form md-outline">
+                                    <input type="email" id="email" class="form-control" ngModel name="email">
+                                    <label for="email">Your Email Address</label>
+                                </div>
+                                <div class="md-form md-outline">
+                                    <input type="number" id="email" class="form-control" ngModel name="phone">
+                                    <label for="phone">Your Number</label>
+                                </div>
+                                <div class="md-form md-outline">
+                                    <textarea id="message" class="md-textarea form-control" rows="3" ngModel
+                                        name="message"></textarea>
+                                    <label for="message">Your Message</label>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-md ml-0 mb-0">Submit</button>
+                                <button type="submit" class="btn btn-dark ml-1" (click)="clear()">Clear</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 offset-md-1 mt-md-4 mb-4 text-white">
+
+                    <h5 class="font-weight-bold">Address</h5>
+                    <p class="mb-0">1632 Main Street</p>
+                    <p class="mb-0">New York, 94126</p>
+                    <p class="mb-4 pb-2">United States</p>
+
+                    <h5 class="font-weight-bold">Phone</h5>
+                    <p class="mb-4 pb-2">+ 01 234 567 89</p>
+
+                    <h5 class="font-weight-bold">Email</h5>
+                    <p>info@gmail.com</p>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>

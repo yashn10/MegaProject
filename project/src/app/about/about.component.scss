@@ -1,0 +1,71 @@
+hr {
+    border-top: 2px solid rgb(66 69 183);
+}
+
+.top-right {
+    position: absolute;
+    top: 185px;
+    left: 100px;
+}
+
+.custom-shape-divider-bottom-1679233773 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1679233773 svg {
+    position: relative;
+    display: block;
+    width: calc(150% + 1.3px);
+    height: 150px;
+}
+
+.custom-shape-divider-bottom-1679233773 .shape-fill {
+    fill: #FFFFFF;
+}
+
+.card {
+    box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+}
+
+.card:hover {
+    box-shadow: 0 20px 28px 0 rgba(0, 0, 0, 0.2);
+}
+
+.footers a {
+    color: #696969;
+}
+
+.footers p {
+    color: #696969;
+}
+
+.footers ul {
+    line-height: 30px;
+}
+
+#social-fb:hover {
+    color: #3B5998;
+    transition: all .001s;
+}
+
+#social-tw:hover {
+    color: #4099FF;
+    transition: all .001s;
+}
+
+#social-gp:hover {
+    color: #d34836;
+    transition: all .001s;
+}
+
+#social-em:hover {
+    color: #f39c12;
+    transition: all .001s;
+}

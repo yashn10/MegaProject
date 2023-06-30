@@ -1,0 +1,282 @@
+<div class="container-fluids" style="margin-top: 50px;" *ngIf="isclicked == ''">
+
+
+    <div class="row">
+
+        <div class="col-lg-1"></div>
+
+        <div class="col-lg-5" style="color: black; padding-top: 100px;">
+            <h1 class="u-align-left u-custom-font u-font-montserrat u-text u-text-default u-text-1 text-center">Blood
+                Group Types
+            </h1>
+            <p class="u-align-left u-text u-text-default u-text-2" style="padding-top: 20px; text-align: justify;"> Your
+                blood will be tested
+                to
+                determine your blood type and your Rh factor. Blood type is classified as A, B, AB or O. The Rh factor
+                refers to
+                the presence or absence of a specific antigen — a substance capable of stimulating an immune response —
+                in the
+                blood. You'll be classified as Rh positive or Rh negative, meaning you do or don't carry the antigen.
+                This
+                information is important because your blood type and Rh factor must be compatible with the blood type
+                and Rh
+                factor of the person receiving your blood.
+                Your blood will be tested to determine your blood type and your Rh factor.
+            </p>
+        </div>
+
+        <div class="col-lg-5">
+            <img src="https://www.neoteryx.com/hubfs/shutterstock_403043707.jpg#keepProtocol" class="img-fluid"
+                style="width: 540px;">
+        </div>
+
+        <div class="col-lg-1"></div>
+
+    </div>
+
+
+    <div class="row mt-5">
+
+        <div class="col-lg-1"></div>
+
+        <div class="col-lg-5" style="color: black; padding-top: 1px;">
+            <img src="https://www.neoteryx.com/hubfs/shutterstock_403043707.jpg#keepProtocol" class="img-fluid"
+                style="width: 540px;">
+        </div>
+
+        <div class="col-lg-5" style="padding-top: 70px;">
+            <h1 class="u-align-left u-custom-font u-font-montserrat u-text u-text-default u-text-1 text-center"> Quick,
+                easy &amp;
+                Great
+                Solution</h1>
+            <p class="u-align-left u-text u-text-default u-text-2" style="padding-top: 20px; text-align: justify;"> Your
+                blood will also be tested for bloodborne
+                diseases,
+                such as hepatitis and&nbsp;HIV. If these tests are negative, the blood is distributed in hospitals and
+                clinics.
+                If any of these tests are positive, the donor center notifies you, and your blood is
+                discarded.Finding a
+                Blood group will be more Easier by using the Search Options,it will provide the blood to your nearest
+                location.
+            </p>
+        </div>
+
+        <div class="col-lg-1"></div>
+
+    </div>
+
+
+    <div class="row mt-5" style="background-color: rgb(234, 236, 238)">
+        <div class="col-12 mt-5" style="font-size: x-large; color: black; text-align: center;">
+            <h1 style="font-size: 50px;"> Do You Need Blood?</h1>
+            <hr>
+        </div>
+    </div>
+
+
+    <div class="row" style="background-color: rgb(234, 236, 238); padding: 50px 50px;">
+
+        <div class="col-lg-4 col-md-6 col-sm-12" style="text-align: center;">
+            <img src="https://tse2.mm.bing.net/th?id=OIP.o0tVE6-ns5p_tZagz8mv_AHaHa&pid=Api&P=0" style="width: 85%">
+        </div>
+
+
+        <!-- <div class="col-lg-4 col-md-6 col-sm-12">
+            <form>
+                <div class="form-group">
+                    <label for="sel1">Select Blood Group:</label>
+                    <select class="form-control" ngModel name="bloodgroup">
+                        <option value="A +(Positive)">A +(Positive)</option>
+                        <option value="A -(Negative)">A -(Negative)</option>
+                        <option value="B +(Positive)">B +(Positive)</option>
+                        <option value="B -(Negative)">B -(Negative)</option>
+                        <option value="AB +(Positive)">AB +(Positive)</option>
+                        <option value="AB -(Negative)">AB -(Negative)</option>
+                        <option value="O +(Positive)">O +(Positive)</option>
+                        <option value="O -(Negative)">O -(Negative)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="City">Enter Your City:</label>
+                    <input type="City" class="form-control" ngModel name="city" placeholder="Enter City">
+                </div>
+
+                <div class="row" style="justify-content: center;">
+                    <button type="Clear" class="btn btn-warning mr-1">Clear</button>
+                    <button type="submit" class="btn btn-success ml-1" (click)="submit()">Submit</button>
+                </div>
+            </form>
+        </div> -->
+
+        <div class="col-lg-4 col-md-6 col-sm-12 text-center rec" style="padding: 70px 25px;">
+            <h2 style="line-height: 45px;">Check for blood donor near you</h2>
+            <button type="submit" class="btn" (click)="submit()">Check Now</button>
+        </div>
+
+
+        <div class="col-lg-4 col-md-6 col-sm-12" style="text-align: center;">
+            <img src="https://tse2.mm.bing.net/th?id=OIP.o0tVE6-ns5p_tZagz8mv_AHaHa&pid=Api&P=0" style="width: 85%">
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+<div class="row form-outline ml-1" style="width: 20%; margin-top: 100px;" *ngIf="isclicked == 'yes'">
+    <input type="search" id="form1" class="form-control" name="search" [(ngModel)]="searchtext"
+        placeholder="Search city or bloodgroup...." aria-label="Search"
+        style="text-align: center; padding: 22px 0px;font-weight: 500; font-size: large;" />
+</div>
+
+<div class="row" style="height: 500px; overflow-y: scroll; padding: 40px 20px;" *ngIf="isclicked == 'yes'">
+
+    <table class="table table-hover text-center table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Sr.No</th>
+                <th>Blood Group</th>
+                <th>Donor City</th>
+                <th>Donor Gender</th>
+                <th>Any Disease</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of donorList | filter: searchtext, let i = index">
+                <td>{{i+1}}</td>
+                <td>{{data.bloodgroup}}</td>
+                <td>{{data.city}}</td>
+                <td>{{data.gender}}</td>
+                <td>{{data.anydisease}}</td>
+                <td>
+                    <button type="submit" class="btn btn-warning" (click)="contact(i)">Donor Profile</button>
+                    <!-- <button type="button" class="btn btn-success ml-2" data-toggle="modal"
+                        data-target="#modalConfirmDelete">Register</button> -->
+
+                    <!-- <div class="modal fade" id="modalConfirmDelete" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
+                            
+                            <div class="modal-content text-center" style="width: 140%;
+                            height: 300px">
+                            
+                                <div class="modal-header d-flex justify-content-center">
+                                    <p class="heading mt-2" style="font-size: larger;">Are you sure?</p>
+                                </div>
+                                
+                                <div class="modal-body">
+                                    <i class="fas fa-times fa-4x animated rotateIn"></i>
+                                    <h3 class="mt-3">Are you sure you want to register to receive blood.</h3>
+                                </div>
+                                
+                                <div class="modal-footer flex-center">
+                                    <a type="button" class="btn  btn-outline-danger">Yes</a>
+                                    <a type="button" class="btn  btn-danger waves-effect" data-dismiss="modal">No</a>
+                                </div>
+                            </div>
+                    
+                        </div>
+                    </div> -->
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<section class="row" style="background-color: #eee; margin-top: 60px;" *ngIf="contactdonor == 'yes'">
+    <div class="container py-5">
+        <div class="row">
+            <div class="col">
+                <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item" (click)="submit()"><a>Donors list</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Donor Profile</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+        <div class="row" *ngFor="let data of userlist">
+            <div class="col-lg-4">
+                <div class="card mb-4">
+                    <div class="card-body text-center" style="height: 380px;">
+                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+                            alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                        <h5 class="my-3">{{data.firstname}} {{data.lastname}}</h5>
+                        <p class="text-muted mb-1">{{data.gender}}</p>
+                        <p class="text-muted mb-4">{{data.city}}</p>
+                        <!-- <div class="d-flex justify-content-center mb-2">
+                            <button type="button" class="btn btn-primary">Follow</button>
+                            <button type="button" class="btn btn-outline-primary ms-1">Message</button>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="card mb-4" style="padding: 15px 0px;">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">First Name</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{data.firstname}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Last Name</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{data.lastname}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Email</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{data.email}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Phone</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{data.phone}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">City</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{data.city}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Address</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{data.address}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

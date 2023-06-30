@@ -1,0 +1,235 @@
+<div class="container-fluid">
+
+
+  <!-- <div class="row navbar navbar-expand-sm sticky-top" style="display: flex; height: 65px;">
+    <img src="../assets/img/1297136.png" style="width: 45px; height: 55px;">
+    <div class="nav container" style="justify-content: center; align-items: center; font-size: 16px;" [ngSwitch]="nav">
+      <ul class="navbar-nav" *ngSwitchCase="'yes'">
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLink="home">HOME</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown">SERVICES</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" routerLink="donor">Donate Blood</a>
+            <hr>
+            <a class="dropdown-item" routerLink="receiver">Blood Receiver</a>
+            <hr>
+            <a class="dropdown-item" routerLink="information">More information</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLink="dashboard">DASHBOARD</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLink="contact">CONTACT</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLink="donation-camp">CAMP</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLink="pharmacy">PHARMACY</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLink="logout">LOGOUT</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav" *ngSwitchCase="''">
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLink="home">HOME</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLink="admin">ADMIN</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLink="logoutcamp">CAMP</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLink="login">LOGIN</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" routerLink="registration">REGISTRATION</a>
+        </li>
+      </ul>
+    </div>
+  </div> -->
+
+
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="height: 60px;">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="home">
+        <img src="../assets/img/logo.png" style="height: 50px;">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent" style="justify-content: center;"
+        [ngSwitch]="nav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0" *ngSwitchCase="'yes'">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="#" routerLink="home">HOME</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" style="cursor: pointer;">SERVICES</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" routerLink="donor">Donate Blood</a>
+              <hr>
+              <a class="dropdown-item" routerLink="receiver">Blood Receiver</a>
+              <hr>
+              <a class="dropdown-item" routerLink="information">More information</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" routerLink="dashboard">DASHBOARD</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" routerLink="contact">CONTACT</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" routerLink="donation-camp">CAMP</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" routerLink="pharmacy">PHARMACY</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" routerLink="logout">LOGOUT</a>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav" *ngSwitchCase="''">
+          <li class="nav-item">
+            <a class="nav-link" href="#" routerLink="home">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" routerLink="information">INFORMATION</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" routerLink="logoutcamp">CAMP</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" style="cursor: pointer;">LOGIN
+              <div class="mega-drop">
+                <div class="mega-grid" style="display: flex;">
+                  <div class="mega-child-div">
+                    <a href="#" routerLink="login" style="display: flex; padding: 15px 15px;">
+                      <img src="../assets/img/login.png" alt="">
+                      <h6>User Login
+                        <p>click to login as a user</p>
+                      </h6>
+                    </a>
+                  </div>
+
+                  <div class="mega-child-div">
+                    <a href="#" routerLink="admin" style="display: flex; padding: 15px 15px;">
+                      <img src="../assets/img/admin login.png" alt="">
+                      <h6>Admin Login
+                        <p>click to login as a user</p>
+                      </h6>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" routerLink="registration">REGISTRATION</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <router-outlet></router-outlet>
+
+
+  <footer class="text-center text-lg-start bg-light text-muted" style="padding: 50px 0px;">
+
+    <section class="d-flex justify-content-center p-4 border-bottom">
+
+      <div class="me-5 d-none d-lg-block">
+        <span>Our Social Networks Information:</span>
+      </div>
+
+    </section>
+
+
+    <section>
+      <div class="container text-center text-md-start mt-5">
+
+        <div class="row mt-3">
+
+          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+
+            <h6 class="text-uppercase fw-bold mb-4">
+              <i class="fas fa-gem me-3"></i>Contact Info:
+            </h6>
+            <p>
+              Here you can contact us anytime for any query, we are available for our customers 24/7.
+            </p>
+          </div>
+
+
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+            <h6 class="text-uppercase fw-bold mb-4">
+              Services
+            </h6>
+            <p>
+              <a routerLink="donor" class="text-reset">Donate blood</a>
+            </p>
+            <p>
+              <a routerLink="receiver" class="text-reset">Receive blood</a>
+            </p>
+            <p>
+              <a routerLink="information" class="text-reset">Blood information</a>
+            </p>
+            <p>
+              <a routerLink="pharmacy" class="text-reset">Online pharmacy</a>
+            </p>
+          </div>
+
+
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+            <h6 class="text-uppercase fw-bold mb-4">
+              Useful links
+            </h6>
+            <p>
+              <a routerLink="logout" class="text-reset">Logout</a>
+            </p>
+            <p>
+              <a routerLink="dashboard" class="text-reset">Dashboard</a>
+            </p>
+            <p>
+              <a routerLink="donation-camp" class="text-reset">Camps</a>
+            </p>
+            <p>
+              <a routerLink="contact" class="text-reset">Contact us</a>
+            </p>
+          </div>
+
+
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+            <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+            <p><i></i> Nagpur, Maharashtra, India </p>
+            <p>
+              <i></i>
+              info@example.com
+            </p>
+            <p><i></i> + 91 222 555 888</p>
+            <p><i></i> + 91 444 888 111</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </footer>
+
+
+</div>

@@ -1,0 +1,158 @@
+<div class="container-fluid">
+
+
+    <div class="row" *ngIf="isclicked == 'yes'">
+        <img src="../assets/img/camp.jpg">
+    </div>
+
+
+    <div class="row" style="text-align: center; background-color: #f8f9fa; padding: 100px 50px;"
+        *ngIf="isclicked == 'yes'">
+        <h1 style="width: 100%; margin-bottom: 30px;color: brown;">Donate blood, give a smile to someone.</h1>
+        <h6 style="text-align: center; padding: 10px 200px; font-size: larger;">We have provided below some effective,
+            inspirational and
+            motivational Slogan on Blood Donation in English. These unique and catchy Blood Donation Slogans are written
+            wisely with rhyming words and phrases to make them attractive to the audience. Apart from obtaining the
+            attention of the audience, these Slogans on Blood Donation will also inspire them, for the noble cause of
+            saving the life of others by donating blood. These Blood Donation Slogan effectively convey the message that
+            blood donation is a gesture of compassion towards the sufferer or the diseased.
+            <br>
+            <br>
+            <br>
+            Interested individuals who are eager to donate blood but are inexperienced should
+            approach blood donation
+            centres or a blood donation drive camp. Almost any individual who is healthy can donate blood as long as
+            they are eligible and pass all criteria. However, it is advised that people under age 18 and over 60 ought
+            to abstain from blood donation
+        </h6>
+    </div>
+
+
+    <div class="row" style=" background-color: #dddddd; text-align: center;" *ngIf="isclicked == 'yes'">
+        <h1 style="color: rgb(90, 26, 26); width: 100%; padding: 25px 0px; background-color: #dddddd;">
+            Register Here For Blood Donation Camps</h1>
+
+    </div>
+
+
+    <body *ngIf="isclicked == 'yes'">
+        <div class="main-block">
+            <div class="left-part" style="color: #eee;">
+                <i class="fas fa-graduation-cap"></i>
+                <h1>Register for our camp services</h1>
+                <p style="font-weight: 600; margin-top: 30px;">We provide services to those who wants to organize camp
+                    for blood donation in any region of country.
+                </p>
+                <div class="btn-group">
+                    <a class="btn btn-item" (click)="camps()">View Camps</a>
+                </div>
+            </div>
+            <form #userForm="ngForm" (ngSubmit)="addcamp(userForm.value)">
+                <div class="title" style="color: white;">
+                    <i class="fas fa-pencil-alt"></i>
+                    <h2>Register your camp here</h2>
+                </div>
+                <div class="info">
+                    <input type="text" ngModel name="campowner" placeholder="Camp owner name">
+                    <input type="email" ngModel name="email" placeholder="Email">
+                    <input type="number" ngModel name="phone" placeholder="Phone number">
+                    <input type="password" ngModel name="password" placeholder="Password">
+                    <input type="city" ngModel name="city" placeholder="Camp city">
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </body>
+
+
+    <div class="row mt-4" *ngIf="isclicked == 'no'" style="height: 500px; overflow-y: scroll;">
+
+        <div class="form-outline mt-4" style="width: 20%;">
+            <input type="search" id="form1" class="form-control" name="search" [(ngModel)]="searchtext"
+                placeholder="Search city or bloodgroup...." aria-label="Search"
+                style="text-align: center; padding: 25px 0px; font-weight: 500; font-size: large;" />
+        </div>
+
+        <table class="table table-hover text-center mt-4 table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Sr.No</th>
+                    <th>Camp Owner</th>
+                    <th>Camp City</th>
+                    <th>Camp Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of campList | filter: searchtext, let i = index">
+                    <td>{{i+1}}</td>
+                    <td>{{data.campowner}}</td>
+                    <td>{{data.city}}</td>
+                    <td>{{data.phone}}</td>
+                    <td>
+                        <button type="button" class="btn" style="background-color: orange;"
+                            (click)="register()">Register</button>
+                        <!-- <button type="button" class="btn" style="background-color: green;"
+                            (click)="edit(data._id, i)">Edit details</button>
+                        <button type="button" class="btn btn-danger ml-2" style="background-color: red;"
+                            (click)="delete(data._id)">Delete</button> -->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="row mt-5" *ngIf="isclicked == 'yes'">
+
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <img class="img-fluid" src="../assets/img/camp2.jpg" style="width: 100%;">
+        </div>
+
+
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <ul style="font-size: 20px; background-color: azure; padding: 30px 40px;">
+                <li>Let’s speak in louder voice; Blood-donation is necessary, not a choice.</li>
+                <li>Blood donation is important in life; it gives others a hope to survive.</li>
+                <li>Blood donation is a boon, it recovers very soon.</li>
+                <li>A small step towards blood donation can give life to someone’s special.</li>
+                <li>Your blood donation is the best social help!</li>
+                <li>You don’t need any extra preparation, if you are going for blood donation.</li>
+                <li>Regular blood donation, can save you from infection.</li>
+                <li>Donate Blood! Give Life!</li>
+                <li>It takes only 15 minutes of time, makes you healthy and other’s fine.</li>
+                <li>Money cannot save him but its your blood, so just donate don’t hesitate.</li>
+                <li>You must do and also ask your wife, Blood donation can save a life.</li>
+            </ul>
+        </div>
+
+    </div>
+
+
+    <div class="row mt-5" *ngIf="isclicked == 'yes'">
+
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <ul style="font-size: 20px; background-color: azure; padding: 30px 40px;">
+                <li>Let’s speak in louder voice; Blood-donation is necessary, not a choice.</li>
+                <li>Blood donation is important in life; it gives others a hope to survive.</li>
+                <li>Blood donation is a boon, it recovers very soon.</li>
+                <li>A small step towards blood donation can give life to someone’s special.</li>
+                <li>Your blood donation is the best social help!</li>
+                <li>You don’t need any extra preparation, if you are going for blood donation.</li>
+                <li>Regular blood donation, can save you from infection.</li>
+                <li>Donate Blood! Give Life!</li>
+                <li>It takes only 15 minutes of time, makes you healthy and other’s fine.</li>
+                <li>Money cannot save him but its your blood, so just donate don’t hesitate.</li>
+                <li>You must do and also ask your wife, Blood donation can save a life.</li>
+            </ul>
+        </div>
+
+
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <img class="img-fluid" src="../assets/img/camp2.jpg" style="width: 100%;">
+        </div>
+
+    </div>
+
+
+</div>

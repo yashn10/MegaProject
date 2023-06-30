@@ -1,0 +1,153 @@
+body,
+div,
+form,
+input,
+select,
+p {
+    padding: 0;
+    margin: 0;
+    outline: none;
+    font-family: Roboto, Arial, sans-serif;
+    font-size: 16px;
+}
+
+body {
+    background: url("https://source.unsplash.com/1219x500/?blood-donation-camp") no-repeat center;
+    background-size: cover;
+}
+
+body form .info input {
+    color: white;
+}
+
+h1,
+h2 {
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+h2 {
+    margin: 0 0 0 8px;
+}
+
+.main-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 25px;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.left-part,
+form {
+    padding: 55px;
+}
+
+.left-part {
+    text-align: center;
+}
+
+.fa-graduation-cap {
+    font-size: 72px;
+}
+
+form {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+}
+
+.main-block input,
+select {
+    padding: 5px;
+    margin-bottom: 30px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #eee;
+}
+
+.main-block input::placeholder {
+    color: #eee;
+}
+
+option:focus {
+    border: none;
+}
+
+option {
+    background: black;
+    border: none;
+}
+
+.btn-item,
+button {
+    border-radius: 5px;
+    border: none;
+    background: none;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 500;
+    color: #fff;
+}
+
+.btn-item {
+    display: inline-block;
+    margin: 20px 5px 0;
+}
+
+form button {
+    width: 20%;
+    height: 40px;
+    background: #5c5ab3;
+}
+
+body .btn-group a {
+    background: #5c5ab3;
+    width: 20%;
+    height: 45px;
+}
+
+body .btn-group a:hover {
+    background: #2320c0;
+}
+
+form button:hover {
+    background: #2320c0;
+}
+
+@media (min-width: 568px) {
+
+    html,
+    body {
+        height: 100%;
+    }
+
+    .main-block {
+        flex-direction: row;
+        height: calc(100% - 50px);
+    }
+
+    .left-part,
+    form {
+        flex: 1;
+        height: auto;
+    }
+}
+
+table tbody td button {
+    color: black;
+    width: 40%;
+    // background-color: orange;
+    font-size: large;
+}
