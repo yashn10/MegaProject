@@ -12,6 +12,10 @@ const Medicine = require('../models/ordermed');
 require('../db/online blood bank');
 
 
+router.get('/', (req, res) => {
+    res.json("hello world");
+})
+
 // student
 
 router.post('/student', (req, res) => {
