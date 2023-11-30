@@ -10,7 +10,7 @@ body {
     font-family: 'Numans', sans-serif;
 }
 
-hr{
+hr {
     border: 1px solid #ffc312;
     width: 30%;
     float: left;
@@ -92,4 +92,8 @@ input:focus {
 
 .links a {
     margin-left: 4px;
+}
+
+.card-body {
+    padding: 10px 25px;
 }
