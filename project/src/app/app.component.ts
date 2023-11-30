@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   constructor(private router: Router, private http: HttpClient, private backend: BackendService) { }
 
   ngOnInit() {
-    this.http.get<any>('http://localhost:3000/login').subscribe(res => {
+    this.http.get<any>('https://megaproject-9885.onrender.com/login').subscribe(res => {
       const user = res.find((a: any) => {
         return a
       })
