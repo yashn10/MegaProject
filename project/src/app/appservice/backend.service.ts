@@ -11,12 +11,12 @@ export class BackendService {
   constructor(private http: HttpClient) { }
 
 
-  contacturl = ('http://localhost:3000/contact');
-  donorurl = ('http://localhost:3000/donor');
-  registerurl = ('http://localhost:3000/user');
-  loginurl = ('http://localhost:3000/login');
-  campurl = ('http://localhost:3000/camp');
-  orderurl = ('http://localhost:3000/order');
+  contacturl = ('https://megaproject-9885.onrender.com/contact');
+  donorurl = ('https://megaproject-9885.onrender.com/donor');
+  registerurl = ('https://megaproject-9885.onrender.com/user');
+  loginurl = ('https://megaproject-9885.onrender.com/login');
+  campurl = ('https://megaproject-9885.onrender.com/camp');
+  orderurl = ('https://megaproject-9885.onrender.com/order');
   buymedicines:any = [];
 
 
