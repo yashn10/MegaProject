@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.http.get<any>('http://localhost:3000/user').subscribe(res => {
+    this.http.get<any>('https://megaproject-9885.onrender.com/user').subscribe(res => {
       const user = res.find((a: any) => {
         return a.email === this.loginForm.value.email && a.password === this.loginForm.value.password
       })
