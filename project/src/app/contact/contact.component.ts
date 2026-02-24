@@ -1,7 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
-import { BackendService } from '../appservice/backend.service';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-contact',
@@ -21,16 +19,16 @@ export class ContactComponent {
 
 
   addUser(data: any) {
-    this.backendService.addconData(data).subscribe(
-      (userdata) => {
-        console.log(userdata);
-      }
-    )
-    this.clear();
+    // this.backendService.addconData(data).subscribe(
+    //   (userdata) => {
+    //     console.log(userdata);
+    //   }
+    // )
+    // this.clear();
   }
 
 
-  constructor(private formbuilder: FormBuilder, private backendService: BackendService) {
+  constructor(private formbuilder: FormBuilder) {
 
     this.contactForm = this.formbuilder.group({
       name: [''],
@@ -41,7 +39,7 @@ export class ContactComponent {
 
   }
 
-  
+
   clear() {
     this.userForm.reset();
   }

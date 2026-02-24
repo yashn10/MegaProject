@@ -1,9 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
-import { BackendService } from '../appservice/backend.service';
 import Swal from 'sweetalert2'
-import { HttpClient } from '@angular/common/http';
-
 
 @Component({
   selector: 'app-donation-camp',
@@ -22,7 +19,7 @@ export class DonationCampComponent implements OnInit {
   ispass = '';
 
 
-  constructor(private formbuilder: FormBuilder, private backend: BackendService, private http: HttpClient) {
+  constructor(private formbuilder: FormBuilder) {
     this.campForm = this.formbuilder.group({
       campowner: [''],
       email: [''],
@@ -36,55 +33,12 @@ export class DonationCampComponent implements OnInit {
 
 
   addcamp(data: any) {
-    this.http.get<any>('https://megaproject-9885.onrender.com/login').subscribe(res => {
-      const user = res.find((a: any) => {
-        return a.email === this.userForm.value.email && a.password === this.userForm.value.password
-      })
-      if (user) {
-        this.backend.addcampData(data).subscribe(
-          (campdata) => {
-            console.log(campdata, "campdata");
-            Swal.fire({
-              position: 'top-end',
-              icon: 'success',
-              title: 'Your camp data has been saved',
-              showConfirmButton: false,
-              timer: 2500
-            })
-          }
-        )
-        this.clear();
-      } else {
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Something went wrong!',
-          footer: 'User login required to register for camp'
-        })
-        this.clear();
-        console.log("Login required");
-      }
-    }, (error: any) => {
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Something went wrong!',
-        footer: 'error from server side occurs'
-      })
-      this.clear();
-      console.log(error, "error");
-    }
-    )
 
   }
 
 
   ngOnInit(): void {
-    this.backend.getcampData().subscribe(
-      (campdata) => {
-        this.campList = campdata;
-      }
-    )
+
   }
 
 

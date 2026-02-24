@@ -1,9 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
-import { BackendService } from '../appservice/backend.service';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2'
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-registration',
@@ -18,7 +17,7 @@ export class RegistrationComponent {
   contactForm: FormGroup;
 
 
-  constructor(private formbuilder: FormBuilder, private backendService: BackendService, private router: Router, private http: HttpClient) {
+  constructor(private formbuilder: FormBuilder, private authService: AuthService, private router: Router) {
 
     this.contactForm = this.formbuilder.group({
       fullname: [''],
@@ -35,56 +34,23 @@ export class RegistrationComponent {
 
 
   addUser(data: any) {
-    this.http.get<any>('https://megaproject-9885.onrender.com/user').subscribe(res => {
-      const user = res.find((a: any) => {
-        return a.email === this.userForm.value.email && a.password === this.userForm.value.password
-      })
-      if (user) {
+    this.authService.register(data).subscribe({
+      next: (res) => {
         Swal.fire({
-          icon: 'info',
-          title: 'Oops...',
-          text: 'User already registered with same email or password!',
-        })
-      } else {
-        this.backendService.addregisterData(data).subscribe(
-          (userdata) => {
-            console.log("userdata", userdata);
-            Swal.fire({
-              title: 'Successfull',
-              text: "Your registration have been successfull!",
-              icon: 'success',
-              showCancelButton: true,
-              confirmButtonColor: '#3085d6',
-              cancelButtonColor: '#d33',
-              confirmButtonText: 'proceed to login!'
-            }).then((result) => {
-              if (result.isConfirmed) {
-                this.router.navigate(['login']);
-              }
-            })
-          }, (error) => {
-            Swal.fire({
-              icon: 'error',
-              title: 'Oops...',
-              text: 'Something went wrong!',
-              footer: 'User registration failed due to invalid email or password'
-            })
-            console.log(error, "error");
-          }
-        )
+          icon: 'success',
+          title: 'Registration Successful',
+          text: 'You have been registered successfully!',
+        }).then(() => {
+          this.router.navigate(['/login']);
+        });
+      }, error: (err) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Registration Failed',
+          text: 'An error occurred during registration. Please try again.',
+        });
       }
-    }, (error: any) => {
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Something went wrong!',
-        footer: 'error from server side occurs'
-      })
-      this.clear();
-      console.log(error, "error");
-    }
-    )
-
+    });
   }
 
 

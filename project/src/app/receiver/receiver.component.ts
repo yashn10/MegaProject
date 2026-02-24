@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
-import { BackendService } from '../appservice/backend.service';
-import { HttpClient } from '@angular/common/http';
+import { ReceiverService } from '../services/reciever.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-receiver',
@@ -24,48 +24,36 @@ export class ReceiverComponent implements OnInit {
 
 
   ngOnInit() {
-    // throw new Error('Method not implemented.');
+    this.fetchAllReceivers();
   }
 
 
   getDonor(city: string) {
-    // this.backendService.getdonorDatacity(city).subscribe(
-    //   (userdata) => {
-    //     console.log("userdata", userdata);
-    //     this.donorList = userdata;
-    //   },
-    //   (error) => {
-    //     console.log("error", error);
-    //   }
-    // )
-    // this.backendService.getdonorDatabg(data).subscribe(
-    //   (userdata) => {
-    //     console.log("userdata", userdata);
-    //     this.donorList = userdata;
-    //   },
-    //   (error) => {
-    //     console.log("error", error);
-    //   }
-    // )
   }
 
 
-  constructor(private formbuilder: FormBuilder, private backendService: BackendService) {
-    this.backendService.getdonorData().subscribe(
-      (userdata) => {
-        console.log("userdata", userdata);
-        this.donorList = userdata;
-      },
-      (error) => {
-        console.log("error", error);
-      }
-    )
-
+  constructor(private formbuilder: FormBuilder, private receiverService: ReceiverService) {
     this.donorForm = this.formbuilder.group({
       bloodgroup: [''],
       city: ['']
     })
+  }
 
+
+  fetchAllReceivers() {
+    this.receiverService.getAllReceivers().subscribe({
+      next: (res) => {
+        this.donorList = res;
+      },
+      error: (err) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!',
+        });
+        console.log(err);
+      }
+    });
   }
 
 
@@ -76,7 +64,7 @@ export class ReceiverComponent implements OnInit {
   }
 
 
-  contact(i:any) {
+  contact(i: any) {
     this.contactdonor = 'yes';
     this.isclicked = 'no';
     this.index = i;

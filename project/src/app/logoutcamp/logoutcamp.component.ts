@@ -1,8 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
-import { BackendService } from '../appservice/backend.service';
 import Swal from 'sweetalert2'
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 @Component({
@@ -21,7 +19,7 @@ export class LogoutcampComponent implements OnInit {
   ispass = '';
 
 
-  constructor(private formbuilder: FormBuilder, private backend: BackendService, private http: HttpClient, private router: Router) {
+  constructor(private formbuilder: FormBuilder, private router: Router) {
     this.campForm = this.formbuilder.group({
       campowner: [''],
       email: [''],
@@ -49,11 +47,7 @@ export class LogoutcampComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.backend.getcampData().subscribe(
-      (campdata) => {
-        this.campList = campdata;
-      }
-    )
+
   }
 
 
@@ -74,36 +68,6 @@ export class LogoutcampComponent implements OnInit {
 
   delete(_id: string) {
 
-    Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.backend.deleteCamp(_id).subscribe(
-          (deleteddata) => {
-            console.log("deleted data", deleteddata);
-          }
-        )
-        Swal.fire(
-          'Deleted!',
-          'Your data has been deleted successfully.',
-          'success'
-        )
-      } else if (
-        result.dismiss === Swal.DismissReason.cancel
-      ) {
-        Swal.fire(
-          'Cancelled',
-          'Your blood donation camp data is safe',
-          'error'
-        )
-      }
-    })
   }
 
 

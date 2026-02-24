@@ -1,7 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
-import { BackendService } from '../appservice/backend.service';
-import { HttpClient } from '@angular/common/http';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -87,7 +85,7 @@ export class OrdermedicineComponent implements OnInit {
   ];
 
 
-  constructor(private formbuilder: FormBuilder, private backend: BackendService, private http: HttpClient) {
+  constructor(private formbuilder: FormBuilder) {
     this.orderForm = this.formbuilder.group({
       name: [''],
       email: [''],
@@ -101,28 +99,6 @@ export class OrdermedicineComponent implements OnInit {
 
 
   order(data: any) {
-
-    this.backend.ordermedicine(data).subscribe(
-      (order) => {
-        console.log(order, "order")
-        this.clear();
-        Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'Your order has been successfully placed',
-          showConfirmButton: false,
-          timer: 2500
-        })
-      }
-    ), (error: any) => {
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Something went wrong!',
-        footer: 'error from server side occurs'
-      })
-    }
-
   }
 
 
