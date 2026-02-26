@@ -1,5 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
+import { ContactService } from '../services/contact.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-contact',
@@ -19,24 +21,35 @@ export class ContactComponent {
 
 
   addUser(data: any) {
-    // this.backendService.addconData(data).subscribe(
-    //   (userdata) => {
-    //     console.log(userdata);
-    //   }
-    // )
-    // this.clear();
+    this.contactService.addContact(data).subscribe({
+      next: (res) => {
+        this.contactList.push(res);
+        Swal.fire({
+          icon: 'success',
+          title: 'Contact Added Successfully',
+          showConfirmButton: true,
+        });
+      },
+      error: (err) => {
+        console.log(err);
+        Swal.fire({
+          icon: 'error',
+          title: 'Failed to Add Contact',
+          showConfirmButton: true,
+        });
+      }
+    });
+    this.clear();
   }
 
 
-  constructor(private formbuilder: FormBuilder) {
-
+  constructor(private formbuilder: FormBuilder, private contactService: ContactService) {
     this.contactForm = this.formbuilder.group({
       name: [''],
       email: [''],
       phone: [''],
       message: ['']
     })
-
   }
 
 

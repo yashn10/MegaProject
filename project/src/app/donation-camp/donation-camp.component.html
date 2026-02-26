@@ -1,163 +1,221 @@
-<div class="container-fluid" style="margin-top: 50px;">
+<div class="fade-in-up" style="margin-top: 56px;">
 
+    <!-- Hero + Registration Section -->
+    <div *ngIf="isclicked == 'yes'">
 
-    <div class="row" *ngIf="isclicked == 'yes'">
-        <img src="../assets/img/camp.jpg" class="img-fluid">
-    </div>
-
-
-    <div class="row" style="text-align: center; background-color: #f8f9fa; padding: 80px 50px;"
-        *ngIf="isclicked == 'yes'">
-        <h1 style="width: 100%; margin-bottom: 30px;color: brown;">Donate blood, give a smile to someone.</h1>
-        <h6 style="text-align: justify; padding: 10px 40px; font-size: larger;">1. We have provided below some
-            effective,
-            inspirational and
-            motivational Slogan on Blood Donation in English. These unique and catchy Blood Donation Slogans are written
-            wisely with rhyming words and phrases to make them attractive to the audience. Apart from obtaining the
-            attention of the audience, these Slogans on Blood Donation will also inspire them, for the noble cause of
-            saving the life of others by donating blood. These Blood Donation Slogan effectively convey the message that
-            blood donation is a gesture of compassion towards the sufferer or the diseased.
-            <br>
-            <br>
-            <br>
-            2. Interested individuals who are eager to donate blood but are inexperienced should
-            approach blood donation
-            centres or a blood donation drive camp. Almost any individual who is healthy can donate blood as long as
-            they are eligible and pass all criteria. However, it is advised that people under age 18 and over 60 ought
-            to abstain from blood donation
-        </h6>
-    </div>
-
-
-    <div class="row" style=" background-color: #dddddd; text-align: center;" *ngIf="isclicked == 'yes'">
-        <h1 style="color: rgb(90, 26, 26); width: 100%; padding: 25px 0px; background-color: #dddddd;">
-            Register Here For Blood Donation Camps</h1>
-
-    </div>
-
-
-    <body *ngIf="isclicked == 'yes'">
-        <div class="main-block">
-            <div class="left-part" style="color: #eee;">
-                <i class="fas fa-graduation-cap"></i>
-                <h1>Register for our camp services</h1>
-                <p style="font-weight: 600; margin-top: 30px;">We provide services to those who wants to organize camp
-                    for blood donation in any region of country.
-                </p>
-                <div class="btn-group">
-                    <a class="btn btn-item" (click)="camps()">View Camps</a>
+        <!-- Camp Banner -->
+        <div style="position: relative;">
+            <img src="../assets/img/camp.jpg" class="img-fluid" style="width: 100%; height: 400px; object-fit: cover;">
+            <div
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(26, 26, 46, 0.7); display: flex; align-items: center; justify-content: center;">
+                <div style="text-align: center; color: #fff;">
+                    <h1 style="font-size: 2.5rem; font-weight: 800; color: #fff; margin-bottom: 12px;">Donate Blood,
+                        Give a Smile</h1>
+                    <p style="font-size: 1.1rem; opacity: 0.85; max-width: 600px; margin: 0 auto;">Join our blood
+                        donation camps and help save lives in your community.</p>
                 </div>
             </div>
-            <form #userForm="ngForm" (ngSubmit)="addcamp(userForm.value)">
-                <div class="title" style="color: white;">
-                    <i class="fas fa-pencil-alt"></i>
-                    <h2>Register your camp here</h2>
+        </div>
+
+        <!-- Info Section -->
+        <div class="section-padding" style="padding: 60px;">
+            <div class="row" style="justify-content: space-evenly;">
+                <div class="col-lg-5">
+                    <div class="card-modern" style="padding: 40px; height: 100%;">
+                        <h4 style="font-weight: 700; color: var(--primary); margin-bottom: 16px;">
+                            <i class="fas fa-heart" style="margin-right: 8px;"></i>Why Donate Blood?
+                        </h4>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            We have provided effective, inspirational and motivational guidance on Blood Donation.
+                            Blood Donation is a gesture of compassion towards the sufferer or the diseased.
+                            Your one donation can save up to three lives.
+                        </p>
+                    </div>
                 </div>
-                <div class="info">
-                    <input type="text" ngModel name="campowner" placeholder="Camp owner name">
-                    <input type="email" ngModel name="email" placeholder="Email">
-                    <input type="number" ngModel name="phone" placeholder="Phone number">
-                    <input type="password" ngModel name="password" placeholder="Password">
-                    <input type="city" ngModel name="city" placeholder="Camp city">
-                    <input type="state" ngModel name="state" placeholder="Camp state">
+                <div class="col-lg-5">
+                    <div class="card-modern" style="padding: 40px; height: 100%;">
+                        <h4 style="font-weight: 700; color: var(--accent); margin-bottom: 16px;">
+                            <i class="fas fa-info-circle" style="margin-right: 8px;"></i>Who Can Donate?
+                        </h4>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            Almost any healthy individual can donate blood as long as they are eligible and pass all
+                            criteria.
+                            However, people under age 18 and over 60 should abstain from blood donation.
+                            Approach nearby camps or donation centres to get started.
+                        </p>
+                    </div>
                 </div>
-                <button type="submit">Submit</button>
-            </form>
+            </div>
         </div>
-    </body>
 
+        <!-- Registration Section -->
+        <div style="background: var(--gradient-hero); padding: 60px 0; justify-items: center;">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <!-- Left Info -->
+                    <div class="col-lg-5 mb-4" style="color: #fff; text-align: center;">
+                        <i class="fas fa-campground" style="font-size: 3rem; opacity: 0.6; margin-bottom: 20px;"></i>
+                        <h2 style="font-weight: 800; color: #fff; margin-bottom: 16px;">Register Your Camp</h2>
+                        <p style="opacity: 0.8; line-height: 1.8; margin-bottom: 24px;">
+                            We provide services to those who want to organize camps for blood donation in any region of
+                            the country.
+                        </p>
+                        <button class="btn btn-branded" (click)="camps()">
+                            <i class="fas fa-list" style="margin-right: 8px;"></i>View All Camps
+                        </button>
+                    </div>
 
+                    <!-- Right Form -->
+                    <div class="col-lg-6">
+                        <div *ngIf="isAdmin" class="card-modern form-modern" style="padding: 35px;">
+                            <h4 style="font-weight: 700; margin-bottom: 20px; text-align: center;">
+                                <i class="fas fa-pencil-alt" style="color: var(--primary); margin-right: 8px;"></i>
+                                Camp Registration
+                            </h4>
+                            <form #userForm="ngForm" (ngSubmit)="addcamp(userForm.value)">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label>Camp Owner</label>
+                                        <input type="text" class="form-control" ngModel name="campowner"
+                                            placeholder="Camp owner name">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label>Email</label>
+                                        <input type="email" class="form-control" ngModel name="email"
+                                            placeholder="Email">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label>Phone</label>
+                                        <input type="number" class="form-control" ngModel name="phone"
+                                            placeholder="Phone number">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label>Password</label>
+                                        <input type="password" class="form-control" ngModel name="password"
+                                            placeholder="Password">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label>City</label>
+                                        <input type="text" class="form-control" ngModel name="city"
+                                            placeholder="Camp city">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label>State</label>
+                                        <input type="text" class="form-control" ngModel name="state"
+                                            placeholder="Camp state">
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-branded" style="width: 100%;">
+                                    <i class="fas fa-check" style="margin-right: 8px;"></i>Register Camp
+                                </button>
+                            </form>
+                        </div>
+                        <div *ngIf="!isAdmin" class="card-modern" style="padding: 40px; text-align: center;">
+                            <i class="fas fa-lock"
+                                style="font-size: 2.5rem; color: var(--text-muted); margin-bottom: 16px;"></i>
+                            <h4 style="font-weight: 700;">Admin Access Required</h4>
+                            <p style="color: var(--text-secondary);">Only administrators can register new camps. Please
+                                login as admin to register a camp.</p>
+                            <a routerLink="/admin" class="btn btn-accent" style="margin-top: 10px;">Login as Admin</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <div class="form-outline" *ngIf="isclicked == 'no'" style="width: 20%; margin-top: 100px;">
-        <input type="search" id="form1" class="form-control" name="search" [(ngModel)]="searchtext"
-            placeholder="Search city or bloodgroup...." aria-label="Search"
-            style="text-align: center; padding: 25px 0px; font-weight: 500; font-size: large;" />
+        <!-- Slogans Section -->
+        <div class="section-padding" style="padding: 60px;">
+            <div class="row align-items-center justify-content-center mb-5">
+                <div class="col-lg-5 mb-4">
+                    <img class="img-fluid" src="../assets/img/camp2.jpg"
+                        style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
+                </div>
+                <div class="col-lg-6 offset-lg-1">
+                    <div class="card-modern" style="padding: 30px;">
+                        <h4 style="font-weight: 700; color: var(--primary); margin-bottom: 20px;">Blood Donation Slogans
+                        </h4>
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li *ngFor="let slogan of [
+                'Blood-donation is necessary, not a choice.',
+                'Blood donation gives others a hope to survive.',
+                'Blood donation is a boon, it recovers very soon.',
+                'A small step can give life to someone special.',
+                'Your blood donation is the best social help!',
+                'It takes only 15 minutes to make a difference.',
+                'Donate Blood! Give Life!'
+              ]" style="padding: 10px 0; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px;">
+                                <i class="fas fa-tint" style="color: var(--primary); font-size: 0.8rem;"></i>
+                                <span style="color: var(--text-secondary);">{{slogan}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
-    <div class="row" *ngIf="isclicked == 'no'" style="height: 500px; overflow-y: scroll; margin-top: 10px">
-        <table class="table table-hover text-center mt-4 table-bordered table-striped">
-            <thead>
-                <tr>
-                    <th>Sr.No</th>
-                    <th>Camp Organizer</th>
-                    <th>Camp City</th>
-                    <th>State</th>
-                    <th>Contact Camp</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let data of campList | filter: searchtext, let i = index">
-                    <td>{{i+1}}</td>
-                    <td>{{data.campowner}}</td>
-                    <td>{{data.city}}</td>
-                    <td>{{data.state}}</td>
-                    <td>{{data.phone}}</td>
-                    <td>
-                        <button type="button" class="btn" (click)="register()">Register</button>
-                        <!-- <button type="button" class="btn" style="background-color: green;"
-                            (click)="edit(data._id, i)">Edit details</button> -->
-                        <!-- <button type="button" class="btn btn-danger ml-2" style="background-color: red;"
-                            (click)="delete(data._id)">Delete</button> -->
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+
+    <!-- Camp List Table View -->
+    <div *ngIf="isclicked == 'no'" class="container section-padding">
+        <div class="section-header">
+            <h2>Available Donation Camps</h2>
+        </div>
+
+        <!-- Search -->
+        <div style="margin-bottom: 30px; max-width: 350px;">
+            <input type="search" class="form-control" [(ngModel)]="searchtext" placeholder="Search by city or state..."
+                style="border-radius: var(--radius-xl); padding: 12px 24px; border: 2px solid var(--border);">
+        </div>
+
+        <!-- Table -->
+        <div class="table-modern" style="overflow-x: auto; max-height: 500px; overflow-y: auto;">
+            <table class="table text-center mb-0">
+                <thead>
+                    <tr>
+                        <th>Sr.No</th>
+                        <th>Camp Organizer</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Contact</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of campList | filter: searchtext; let i = index">
+                        <td>{{i+1}}</td>
+                        <td>
+                            <span
+                                style="background: rgba(198, 40, 40, 0.1); color: var(--primary); padding: 4px 12px; border-radius: 20px; font-weight: 700; font-size: 0.85rem;">
+                                {{data.campowner}}
+                            </span>
+                        </td>
+                        <td>{{data.city}}</td>
+                        <td>{{data.state}}</td>
+                        <td>{{data.phone}}</td>
+                        <td>
+                            <button class="btn btn-accent" style="font-size: 0.82rem; padding: 6px 18px;"
+                                (click)="register()">
+                                <i class="fas fa-clipboard-check" style="margin-right: 4px;"></i>Register
+                            </button>
+                        </td>
+                    </tr>
+                    <tr *ngIf="campList && campList.length === 0">
+                        <td colspan="6" style="padding: 40px; color: var(--text-muted);">No camps available yet.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div style="margin-top: 20px;">
+            <button class="btn btn-branded-outline" (click)="goback()">
+                <i class="fas fa-arrow-left" style="margin-right: 6px;"></i>Back to Camp Info
+            </button>
+        </div>
     </div>
-
-
-    <div class="row mt-5" *ngIf="isclicked == 'yes'">
-
-        <div class="col-lg-6 col-md-6 col-sm-12">
-            <img class="img-fluid" src="../assets/img/camp2.jpg"
-                style="width: 100%;">
-        </div>
-
-
-        <div class="col-lg-6 col-md-6 col-sm-12">
-            <ul style="font-size: 20px; background-color: azure; padding: 30px 40px;">
-                <li>Let’s speak in louder voice; Blood-donation is necessary, not a choice.</li>
-                <li>Blood donation is important in life; it gives others a hope to survive.</li>
-                <li>Blood donation is a boon, it recovers very soon.</li>
-                <li>A small step towards blood donation can give life to someone’s special.</li>
-                <li>Your blood donation is the best social help!</li>
-                <li>You don’t need any extra preparation, if you are going for blood donation.</li>
-                <li>Regular blood donation, can save you from infection.</li>
-                <li>Donate Blood! Give Life!</li>
-                <li>It takes only 15 minutes of time, makes you healthy and other’s fine.</li>
-                <li>Money cannot save him but its your blood, so just donate don’t hesitate.</li>
-                <li>You must do and also ask your wife, Blood donation can save a life.</li>
-            </ul>
-        </div>
-
-    </div>
-
-
-    <div class="row mt-5" *ngIf="isclicked == 'yes'">
-
-        <div class="col-lg-6 col-md-6 col-sm-12">
-            <ul style="font-size: 20px; background-color: azure; padding: 30px 40px;">
-                <li>Let’s speak in louder voice; Blood-donation is necessary, not a choice.</li>
-                <li>Blood donation is important in life; it gives others a hope to survive.</li>
-                <li>Blood donation is a boon, it recovers very soon.</li>
-                <li>A small step towards blood donation can give life to someone’s special.</li>
-                <li>Your blood donation is the best social help!</li>
-                <li>You don’t need any extra preparation, if you are going for blood donation.</li>
-                <li>Regular blood donation, can save you from infection.</li>
-                <li>Donate Blood! Give Life!</li>
-                <li>It takes only 15 minutes of time, makes you healthy and other’s fine.</li>
-                <li>Money cannot save him but its your blood, so just donate don’t hesitate.</li>
-                <li>You must do and also ask your wife, Blood donation can save a life.</li>
-            </ul>
-        </div>
-
-
-        <div class="col-lg-6 col-md-6 col-sm-12">
-            <img class="img-fluid" src="../assets/img/camp2.jpg"
-                style="width: 100%;">
-        </div>
-
-    </div>
-
 
 </div>

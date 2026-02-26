@@ -1,48 +1,239 @@
-<div class="row" style="padding: 0px 150px; margin-top: 10%; margin-bottom: 10%;">
-  <h1 style="margin-bottom: 50px;">Your Activity</h1>
-  <div class="card-columns">
-    <div class="card">
-      <div class="card-body text-center bg-primary">
-        <p class="card-text">Your blood donations</p>
-      </div>
-      <div class="card-footer text-muted">
-        2 Times
-      </div>
+<div class="fade-in-up" style="margin-top: 56px;">
+
+  <!-- Welcome Banner -->
+  <div class="hero-gradient" style="padding: 70px 40px;">
+    <div class="container" *ngIf="user">
+      <h1 style="font-size: 2.2rem;">Welcome back, {{user.fullname}}! 👋</h1>
+      <p style="opacity: 0.8; font-size: 1rem; margin-top: 8px;">
+        <span class="role-badge" [ngClass]="user.role === 'admin' ? 'admin' : 'user'"
+          style="background: rgba(255,255,255,0.15); color: #fff;">
+          {{user.role | uppercase}}
+        </span>
+      </p>
     </div>
-    <div class="card">
-      <div class="card-body text-center bg-warning">
-        <p class="card-text">Wheather you have taken blood</p>
-      </div>
-      <div class="card-footer text-muted">
-        Not received
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-body text-center bg-success">
-        <p class="card-text">List of purchased medicines</p>
-      </div>
-      <div class="card-footer text-muted">
-        4 Medicines
+  </div>
+
+  <!-- Profile Info -->
+  <div class="container" style="margin-top: -40px; margin-bottom: 40px;" *ngIf="user">
+    <div class="card-modern" style="padding: 30px 40px;">
+      <div class="row">
+        <div class="col-md-6">
+          <div style="margin-bottom: 18px;">
+            <span
+              style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); font-weight: 600;">Username</span>
+            <p style="font-weight: 600; font-size: 1.05rem; margin: 4px 0 0;">{{user.username}}</p>
+          </div>
+          <div style="margin-bottom: 18px;">
+            <span
+              style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); font-weight: 600;">Email</span>
+            <p style="font-weight: 500; margin: 4px 0 0;">{{user.email}}</p>
+          </div>
+          <div>
+            <span
+              style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); font-weight: 600;">Phone</span>
+            <p style="font-weight: 500; margin: 4px 0 0;">{{user.phone}}</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div style="margin-bottom: 18px;">
+            <span
+              style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); font-weight: 600;">Blood
+              Group</span>
+            <p style="font-weight: 700; font-size: 1.3rem; color: var(--primary); margin: 4px 0 0;">{{user.bloodgroup}}
+            </p>
+          </div>
+          <div style="margin-bottom: 18px;">
+            <span
+              style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); font-weight: 600;">Age</span>
+            <p style="font-weight: 500; margin: 4px 0 0;">{{user.age}}</p>
+          </div>
+          <div>
+            <span
+              style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); font-weight: 600;">Gender</span>
+            <p style="font-weight: 500; margin: 4px 0 0;">{{user.gender}}</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+
+  <!-- Activity Stats -->
+  <div class="container" style="padding-bottom: 60px;">
+    <h2 style="font-weight: 800; margin-bottom: 10px; font-size: 1.5rem;">Your Activity</h2>
+    <p style="color: var(--text-muted); margin-bottom: 24px; font-size: 0.9rem;">Click on a card to view history</p>
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="stat-card" style="background: var(--gradient-primary); cursor: pointer;"
+          (click)="showHistory('donations')">
+          <i class="fas fa-tint"></i>
+          <h3>{{stats.donations}}</h3>
+          <p>Blood Donations</p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="stat-card" style="background: var(--gradient-accent); cursor: pointer;"
+          (click)="showHistory('appointments')">
+          <i class="fas fa-calendar-check"></i>
+          <h3>{{stats.appointments}}</h3>
+          <p>Doctor Appointments</p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="stat-card" style="background: linear-gradient(135deg, #00695c, #26a69a); cursor: pointer;"
+          (click)="showHistory('orders')">
+          <i class="fas fa-pills"></i>
+          <h3>{{stats.orders}}</h3>
+          <p>Medicine Orders</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 
-<!-- <div class="sidenav">
-  <ul>
-    <li><a href="home">Home</a></li>
-    <li><a href="about">About</a></li>
-    <li data-toggle="dropdown"><a href="services">Services</a>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Receiver</a>
-        <a class="dropdown-item" href="#">Donor</a>
-        <a class="dropdown-item" href="#">Camp</a>
-      </div>
-    </li>
-    <li><a href="#">Clients</a></li>
-    <li><a href="contact">Contact</a></li>
-  </ul>
-</div> -->
+<!-- ========== HISTORY MODAL ========== -->
+<div *ngIf="activeTab" class="history-modal-overlay" (click)="closeModal($event)">
+  <div class="history-modal" (click)="$event.stopPropagation()">
 
-<router-outlet></router-outlet>
+    <!-- Modal Header -->
+    <div class="history-modal-header"
+      [style.background]="activeTab === 'donations' ? 'var(--gradient-primary)' : activeTab === 'appointments' ? 'var(--gradient-accent)' : 'linear-gradient(135deg, #00695c, #26a69a)'">
+      <div>
+        <i class="fas"
+          [ngClass]="{'fa-tint': activeTab === 'donations', 'fa-calendar-check': activeTab === 'appointments', 'fa-pills': activeTab === 'orders'}"
+          style="font-size: 1.4rem; margin-right: 12px;"></i>
+        <span style="font-size: 1.3rem; font-weight: 700;">
+          {{activeTab === 'donations' ? 'Blood Donation History' : activeTab === 'appointments' ? 'Appointment History'
+          : 'Medicine Order History'}}
+        </span>
+      </div>
+      <button (click)="activeTab = ''"
+        style="background: rgba(255,255,255,0.2); border: none; color: #fff; width: 36px; height: 36px; border-radius: 50%; font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s;">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <!-- Modal Body -->
+    <div class="history-modal-body">
+
+      <!-- Loading -->
+      <div *ngIf="loadingHistory" style="text-align: center; padding: 60px 0;">
+        <div class="spinner-branded" style="margin: 0 auto;"></div>
+        <p style="margin-top: 16px; color: var(--text-muted);">Loading...</p>
+      </div>
+
+      <!-- DONATIONS -->
+      <div *ngIf="activeTab === 'donations' && !loadingHistory">
+        <div *ngIf="stats.donations === 0" style="text-align: center; padding: 60px 20px;">
+          <i class="fas fa-tint" style="font-size: 3rem; color: var(--border); margin-bottom: 16px;"></i>
+          <h5 style="font-weight: 700; color: var(--text-secondary);">No Donations Yet</h5>
+          <p style="color: var(--text-muted);">Register as a donor to start saving lives!</p>
+          <a routerLink="/services" class="btn btn-branded" style="margin-top: 10px;">Become a Donor</a>
+        </div>
+        <div *ngIf="stats.donations > 0" style="padding: 20px;">
+          <div
+            style="background: rgba(198,40,40,0.06); border-radius: var(--radius-sm); padding: 20px; text-align: center;">
+            <i class="fas fa-check-circle" style="font-size: 2.5rem; color: var(--primary); margin-bottom: 12px;"></i>
+            <h5 style="font-weight: 700;">{{stats.donations}} Donation(s) Registered</h5>
+            <p style="color: var(--text-secondary); margin-bottom: 12px;">Thank you for your contributions! Visit the
+              Donor page to manage your records.</p>
+            <a routerLink="/services" class="btn btn-branded">View Donor Page</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- APPOINTMENTS -->
+      <div *ngIf="activeTab === 'appointments' && !loadingHistory">
+        <div *ngIf="appointments.length === 0" style="text-align: center; padding: 60px 20px;">
+          <i class="fas fa-calendar" style="font-size: 3rem; color: var(--border); margin-bottom: 16px;"></i>
+          <h5 style="font-weight: 700; color: var(--text-secondary);">No Appointments</h5>
+          <p style="color: var(--text-muted);">Book your first doctor appointment today!</p>
+          <a routerLink="/doctor" class="btn btn-accent" style="margin-top: 10px;">Book Appointment</a>
+        </div>
+        <div *ngFor="let apt of appointments" class="history-item">
+          <div class="row align-items-center">
+            <div class="col-2 col-md-1" style="text-align: center;">
+              <div
+                style="width: 44px; height: 44px; border-radius: 50%; background: rgba(26,35,126,0.08); display: flex; align-items: center; justify-content: center;">
+                <i class="fas fa-user-md" style="color: var(--accent);"></i>
+              </div>
+            </div>
+            <div class="col-10 col-md-4">
+              <h6 style="font-weight: 700; margin-bottom: 2px; font-size: 0.95rem;">{{apt.doctorName || 'Doctor'}}</h6>
+              <p style="color: var(--text-muted); font-size: 0.82rem; margin: 0;">Patient: {{apt.fullname}}</p>
+            </div>
+            <div class="col-6 col-md-3" style="margin-top: 8px;">
+              <p style="margin: 0; font-size: 0.85rem; color: var(--text-secondary);">
+                <i class="fas fa-calendar" style="margin-right: 4px; color: var(--text-muted); font-size: 0.78rem;"></i>
+                {{apt.preferredDate | date:'mediumDate'}}
+              </p>
+              <p style="margin: 2px 0 0; font-size: 0.8rem; color: var(--text-muted);">{{apt.timeSlot}}</p>
+            </div>
+            <div class="col-6 col-md-4" style="text-align: right; margin-top: 8px;">
+              <span class="status-badge"
+                [style.background]="apt.status === 'confirmed' ? 'rgba(46,125,50,0.1)' : apt.status === 'completed' ? 'rgba(26,35,126,0.1)' : 'rgba(255,152,0,0.1)'"
+                [style.color]="apt.status === 'confirmed' ? '#2e7d32' : apt.status === 'completed' ? '#1a237e' : '#f57c00'">
+                {{apt.status | uppercase}}
+              </span>
+              <p style="margin: 4px 0 0; font-size: 0.75rem; color: var(--text-muted);">{{apt.createdAt | date:'short'}}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ORDERS -->
+      <div *ngIf="activeTab === 'orders' && !loadingHistory">
+        <div *ngIf="orders.length === 0" style="text-align: center; padding: 60px 20px;">
+          <i class="fas fa-box-open" style="font-size: 3rem; color: var(--border); margin-bottom: 16px;"></i>
+          <h5 style="font-weight: 700; color: var(--text-secondary);">No Orders Yet</h5>
+          <p style="color: var(--text-muted);">Browse our pharmacy to order medicines!</p>
+          <a routerLink="/ordermedicine" class="btn"
+            style="background: linear-gradient(135deg, #00695c, #26a69a); color: #fff; margin-top: 10px;">Visit
+            Pharmacy</a>
+        </div>
+        <div *ngFor="let order of orders" class="history-item">
+          <div class="row align-items-center">
+            <div class="col-2 col-md-1" style="text-align: center;">
+              <div
+                style="width: 44px; height: 44px; border-radius: 50%; background: rgba(0,105,92,0.08); display: flex; align-items: center; justify-content: center;">
+                <i class="fas fa-box" style="color: #00695c;"></i>
+              </div>
+            </div>
+            <div class="col-10 col-md-3">
+              <h6 style="font-weight: 700; margin-bottom: 2px; font-size: 0.95rem;">Order #{{order._id?.slice(-6) |
+                uppercase}}</h6>
+              <p style="color: var(--text-muted); font-size: 0.82rem; margin: 0;">{{order.items?.length}} item(s) •
+                {{order.city}}</p>
+            </div>
+            <div class="col-12 col-md-3" style="margin-top: 6px;">
+              <div *ngFor="let item of order.items?.slice(0, 2)"
+                style="font-size: 0.8rem; color: var(--text-secondary); padding: 1px 0;">
+                <i class="fas fa-circle"
+                  style="font-size: 0.3rem; margin-right: 6px; vertical-align: middle; color: var(--text-muted);"></i>
+                {{item.name | slice:0:28}}{{item.name?.length > 28 ? '...' : ''}}
+              </div>
+              <span *ngIf="order.items?.length > 2"
+                style="font-size: 0.75rem; color: var(--text-muted);">+{{order.items.length - 2}} more</span>
+            </div>
+            <div class="col-6 col-md-2" style="text-align: center; margin-top: 6px;">
+              <p style="font-size: 1.15rem; font-weight: 800; color: #00695c; margin: 0;">
+                ₹{{order.totalPrice?.toFixed(2)}}</p>
+            </div>
+            <div class="col-6 col-md-3" style="text-align: right; margin-top: 6px;">
+              <span class="status-badge"
+                [style.background]="order.status === 'confirmed' ? 'rgba(46,125,50,0.1)' : order.status === 'delivered' ? 'rgba(26,35,126,0.1)' : 'rgba(255,152,0,0.1)'"
+                [style.color]="order.status === 'confirmed' ? '#2e7d32' : order.status === 'delivered' ? '#1a237e' : '#f57c00'">
+                {{order.status | uppercase}}
+              </span>
+              <p style="margin: 4px 0 0; font-size: 0.75rem; color: var(--text-muted);">{{order.createdAt |
+                date:'short'}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

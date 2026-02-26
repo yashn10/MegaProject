@@ -1,9 +1,8 @@
 const Contacts = require('../models/contact');
-const errorResponse = require('../utils/responseHelpers');
-const successResponse = require('../utils/responseHelpers');
+const { errorResponse, successResponse } = require('../utils/responseHelpers');
 
 
-export const createContact = async (req, res) => {
+const createContact = async (req, res) => {
     try {
         const contact = new Contacts(req.body);
         await contact.save();
@@ -13,3 +12,5 @@ export const createContact = async (req, res) => {
         return errorResponse(res, 500, "Server Error");
     }
 }
+
+module.exports = { createContact };

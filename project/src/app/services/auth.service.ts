@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -7,7 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class AuthService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   baseUrl = environment.production ? environment.productionUrl : environment.apiUrl;
 
@@ -23,8 +24,44 @@ export class AuthService {
     return this.http.post(`${this.baseUrl}/auth/logout`, {});
   }
 
-  isLoggedIn(): boolean {
-    return !!localStorage.getItem('token');
+  getMe() {
+    return this.http.get(`${this.baseUrl}/auth/me`);
   }
 
+  // Token management
+  saveToken(token: string): void {
+    localStorage.setItem('token', token);
+  }
+
+  getToken(): string | null {
+    return localStorage.getItem('token');
+  }
+
+  // User management
+  saveUser(user: any): void {
+    localStorage.setItem('user', JSON.stringify(user));
+  }
+
+  getUser(): any {
+    const user = localStorage.getItem('user');
+    return user ? JSON.parse(user) : null;
+  }
+
+  getUserRole(): string {
+    const user = this.getUser();
+    return user ? user.role : '';
+  }
+
+  isLoggedIn(): boolean {
+    return !!this.getToken();
+  }
+
+  isAdmin(): boolean {
+    return this.getUserRole() === 'admin';
+  }
+
+  clearSession(): void {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+  }
 }

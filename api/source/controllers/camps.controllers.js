@@ -1,9 +1,8 @@
 const Camps = require('../models/camp');
-const errorResponse = require('../utils/responseHelpers');
-const successResponse = require('../utils/responseHelpers');
+const { errorResponse, successResponse } = require('../utils/responseHelpers');
 
 
-export const createCamp = async (req, res) => {
+const createCamp = async (req, res) => {
     try {
         const camp = new Camps(req.body);
         await camp.save();
@@ -15,7 +14,7 @@ export const createCamp = async (req, res) => {
 }
 
 
-export const getCampById = async (req, res) => {
+const getCampById = async (req, res) => {
     try {
         const campId = req.params.id;
         const camp = await Camps.findById(campId);
@@ -30,7 +29,7 @@ export const getCampById = async (req, res) => {
 }
 
 
-export const getAllCamps = async (req, res) => {
+const getAllCamps = async (req, res) => {
     try {
         const camps = await Camps.find();
         return successResponse(res, 200, "Camps retrieved successfully", camps);
@@ -41,7 +40,7 @@ export const getAllCamps = async (req, res) => {
 }
 
 
-export const updateCamp = async (req, res) => {
+const updateCamp = async (req, res) => {
     try {
         const campId = req.params.id;
         const updates = req.body;
@@ -57,7 +56,7 @@ export const updateCamp = async (req, res) => {
 }
 
 
-export const deleteCamp = async (req, res) => {
+const deleteCamp = async (req, res) => {
     try {
         const campId = req.params.id;
         const camp = await Camps.findByIdAndDelete(campId);
@@ -70,3 +69,5 @@ export const deleteCamp = async (req, res) => {
         return errorResponse(res, 500, "Server Error");
     }
 }
+
+module.exports = { createCamp, getCampById, getAllCamps, updateCamp, deleteCamp };

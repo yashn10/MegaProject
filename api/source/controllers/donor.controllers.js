@@ -1,9 +1,8 @@
 const Donors = require('../models/donor');
-const errorResponse = require('../utils/responseHelpers');
-const successResponse = require('../utils/responseHelpers');
+const { errorResponse, successResponse } = require('../utils/responseHelpers');
 
 
-export const createDonor = async (req, res) => {
+const createDonor = async (req, res) => {
     try {
         const donor = new Donors(req.body);
         await donor.save();
@@ -15,7 +14,7 @@ export const createDonor = async (req, res) => {
 }
 
 
-export const getAllDonors = async (req, res) => {
+const getAllDonors = async (req, res) => {
     try {
         const donors = await Donors.find();
         return successResponse(res, 200, "Donors retrieved successfully", donors);
@@ -27,7 +26,7 @@ export const getAllDonors = async (req, res) => {
 
 
 
-export const getDonorById = async (req, res) => {
+const getDonorById = async (req, res) => {
     try {
         const donor = await Donors.findById(req.params.id);
         if (!donor) {
@@ -41,7 +40,7 @@ export const getDonorById = async (req, res) => {
 }
 
 
-export const updateDonor = async (req, res) => {
+const updateDonor = async (req, res) => {
     try {
         const donor = await Donors.findByIdAndUpdate(req.params.id, req.body, { new: true });
         if (!donor) {
@@ -56,7 +55,7 @@ export const updateDonor = async (req, res) => {
 
 
 
-export const deleteDonor = async (req, res) => {
+const deleteDonor = async (req, res) => {
     try {
         const donor = await Donors.findByIdAndDelete(req.params.id);
         if (!donor) {
@@ -68,3 +67,5 @@ export const deleteDonor = async (req, res) => {
         return errorResponse(res, 500, "Server Error");
     }
 }
+
+module.exports = { createDonor, getAllDonors, getDonorById, updateDonor, deleteDonor };

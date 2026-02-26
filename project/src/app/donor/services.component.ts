@@ -1,7 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+import { DonorService } from '../services/donor.service';
+import { AuthService } from '../services/auth.service';
 
 
 @Component({
@@ -18,48 +20,45 @@ export class ServicesComponent {
 
 
   addDonor(data: any) {
-    // this.http.get<any>('http://localhost:3000/login').subscribe(res => {
-    //   const user = res.find((a: any) => {
-    //     return a.email === this.userForm.value.email
-    //   })
-    //   if (user) {
-    //     this.backendService.adddonorData(data).subscribe(
-    //       (userdata) => {
-    //         console.log(userdata);
-    //         Swal.fire({
-    //           position: 'top-end',
-    //           icon: 'success',
-    //           title: 'Your data has been saved',
-    //           showConfirmButton: false,
-    //           timer: 2000
-    //         })
-    //       }
-    //     )
-    //     this.userForm.reset;
-    //   } else {
-    //     Swal.fire({
-    //       icon: 'error',
-    //       title: 'Oops...',
-    //       text: 'Something went wrong!',
-    //       footer: 'User login required to register for blood donation'
-    //     })
-    //     console.log("Login required");
-    //   }
-    // }, (error) => {
-    //   Swal.fire({
-    //     icon: 'error',
-    //     title: 'Oops...',
-    //     text: 'Something went wrong!',
-    //     footer: 'error from server side'
-    //   })
-    //   console.log(error, "error");
-    // }
-    // )
+    if (!this.authService.isLoggedIn()) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!',
+        footer: 'User login required to register for blood donation'
+      });
+      return;
+    }
+    this.donorService.createDonor(data).subscribe({
+      next: (res) => {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Your data has been saved',
+          showConfirmButton: false,
+          timer: 2000
+        });
+        this.userForm.reset();
+      },
+      error: (err) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!',
+          footer: 'Error from server side'
+        });
+        console.log(err);
+      }
+    });
   }
 
 
-  constructor(private formbuilder: FormBuilder, private router: Router) {
-
+  constructor(
+    private formbuilder: FormBuilder,
+    private router: Router,
+    private donorService: DonorService,
+    private authService: AuthService
+  ) {
     this.donorForm = this.formbuilder.group({
       firstname: [''],
       middlename: [''],
@@ -73,8 +72,7 @@ export class ServicesComponent {
       gender: [''],
       anydisease: [''],
       disease: ['']
-    })
-
+    });
   }
 
 

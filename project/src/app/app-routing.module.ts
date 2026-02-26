@@ -10,50 +10,52 @@ import { ServicesComponent } from './donor/services.component';
 import { ReceiverComponent } from './receiver/receiver.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
-import { LogoutComponent } from './logout/logout.component';
 import { PharmacyComponent } from './pharmacy/pharmacy.component';
 import { OrdermedicineComponent } from './ordermedicine/ordermedicine.component';
 import { DoctorComponent } from './doctor/doctor.component';
-import { LogoutcampComponent } from './logoutcamp/logoutcamp.component';
 import { InformationComponent } from './information/information.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
 
   {
-    path:'home',
-    component:HomeComponent
+    path: 'home',
+    component: HomeComponent
   },
 
   {
-    path:'',
-    component:HomeComponent
+    path: '',
+    component: HomeComponent
   },
 
   {
-    path:'dashboard',
-    component:DashboardComponent
+    path: 'dashboard',
+    component: DashboardComponent,
+    canActivate: [AuthGuard]
   },
 
   {
-    path:'about',
-    component:AboutComponent
+    path: 'about',
+    component: AboutComponent
   },
 
   {
-    path:'contact',
-    component:ContactComponent
+    path: 'contact',
+    component: ContactComponent
   },
 
   {
-    path:'donor',
-    component:ServicesComponent
+    path: 'donor',
+    component: ServicesComponent,
+    canActivate: [AuthGuard]
   },
 
   {
-    path:'receiver',
-    component:ReceiverComponent
+    path: 'receiver',
+    component: ReceiverComponent,
+    canActivate: [AuthGuard]
   },
-  
+
   {
     path: 'admin',
     component: AdminComponent
@@ -75,11 +77,6 @@ const routes: Routes = [
   },
 
   {
-    path: 'logout',
-    component: LogoutComponent
-  },
-
-  {
     path: 'pharmacy',
     component: PharmacyComponent
   },
@@ -92,11 +89,6 @@ const routes: Routes = [
   {
     path: 'doctor',
     component: DoctorComponent
-  },
-
-  {
-    path: 'logoutcamp',
-    component: LogoutcampComponent
   },
 
   {

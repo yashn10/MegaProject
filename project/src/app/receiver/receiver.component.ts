@@ -42,8 +42,8 @@ export class ReceiverComponent implements OnInit {
 
   fetchAllReceivers() {
     this.receiverService.getAllReceivers().subscribe({
-      next: (res) => {
-        this.donorList = res;
+      next: (res: any) => {
+        this.donorList = res.data;
       },
       error: (err) => {
         Swal.fire({

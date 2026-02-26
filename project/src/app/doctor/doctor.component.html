@@ -1,107 +1,78 @@
-<body class="row" *ngIf="yesappointment == ''">
+<div class="fade-in-up" style="margin-top: 56px;">
 
+    <!-- Main Doctor Page -->
+    <div *ngIf="yesappointment == '' && yesprescription == ''">
 
-    <div id="demo" class="carousel slide" data-ride="carousel">
-        <ul class="carousel-indicators">
-            <li data-target="#demo" data-slide-to="0" class=""></li>
-            <li data-target="#demo" data-slide-to="1" class="active"></li>
-            <li data-target="#demo" data-slide-to="2"></li>
-        </ul>
-        <div class="carousel-inner">
-            <div class="carousel-item">
-                <img src="../assets/img/Crousel3.jpeg" alt="E-Pharmacy" width="100%" height="500">
-                <div class="carousel-caption">
-                    <h3>Medicine+Health+Beauty</h3>
+        <!-- Carousel -->
+        <div id="doctorCarousel" class="carousel slide" data-ride="carousel">
+            <ul class="carousel-indicators">
+                <li data-target="#doctorCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#doctorCarousel" data-slide-to="1"></li>
+                <li data-target="#doctorCarousel" data-slide-to="2"></li>
+            </ul>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="../assets/img/Crousel3.jpeg" alt="Healthcare"
+                        style="width: 100%; height: 450px; object-fit: cover;">
+                </div>
+                <div class="carousel-item">
+                    <img src="../assets/img/Crousel5.jpeg" alt="Healthcare"
+                        style="width: 100%; height: 450px; object-fit: cover;">
+                </div>
+                <div class="carousel-item">
+                    <img src="../assets/img/Crousel6.jpeg" alt="Healthcare"
+                        style="width: 100%; height: 450px; object-fit: cover;">
                 </div>
             </div>
-            <div class="carousel-item active">
-                <img src="../assets/img/Crousel5.jpeg" alt="E-Pharmacy" width="100%" height="500">
-                <div class="carousel-caption">
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="../assets/img/Crousel6.jpeg" alt="E-Pharmacy" width="100%" height="500">
-                <div class="carousel-caption">
-                </div>
+            <a class="carousel-control-prev" href="#doctorCarousel" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#doctorCarousel" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+        </div>
+
+        <!-- Search -->
+        <div class="container" style="padding: 30px 0;">
+            <div class="d-flex justify-content-center">
+                <input type="text" class="form-control" placeholder="Search doctors, specialties..."
+                    style="max-width: 400px; border-radius: var(--radius-xl); padding: 12px 24px; border: 2px solid var(--border);">
+                <button type="button" class="btn btn-branded" style="margin-left: 10px;">Search</button>
             </div>
         </div>
-        <a class="carousel-control-prev" href="#demo" data-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-        </a>
-        <a class="carousel-control-next" href="#demo" data-slide="next">
-            <span class="carousel-control-next-icon"></span>
-        </a>
-    </div>
 
-
-    <br>
-    <div class="container justify-content-center">
-        <form>
-            <div class="form-group d-flex justify-content-center">
-                <input type="text" class="form-control" placeholder="Search Here" id="usr" style="width: 22rem;">
-                <button type="button" class="btn btn-success">Search</button>
+        <!-- Section Header -->
+        <div class="container">
+            <div class="section-header">
+                <h2>Prescription & Appointments</h2>
             </div>
-        </form>
-    </div>
+        </div>
 
-
-    <div class="container d-flex justify-content-center mb-2">
-        <div class="title p-3">Pricription And Dr. Appoitment</div>
-    </div>
-
-
-    <br>
-    <div class="container" style="padding: 60px 40px;">
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="card" style="width:300px">
-                    <img class="card-img-top" src="../assets/img/doctor.jpg" alt="Card image" style="width:100%">
-                    <div class="card-body">
-                        <h4 class="card-title">John Doe</h4>
-                        <p class="card-text">Some example text some example text. John Doe is an architect and
-                            engineer</p>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <a class="btn btn-primary" (click)="prescription()">Pricription</a>
-                            </div>
-                            <div class="col-lg-6">
-                                <a class="btn btn-warning" (click)="appointment()">Appoitment</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="card" style="width:300px">
-                    <img class="card-img-top" src="../assets/img/doctor2.jpg" alt="Card image" style="width:100%">
-                    <div class="card-body">
-                        <h4 class="card-title">John Doe</h4>
-                        <p class="card-text">Some example text some example text. John Doe is an architect and
-                            engineer</p>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <a class="btn btn-primary" (click)="prescription()">Pricription</a>
-                            </div>
-                            <div class="col-lg-6">
-                                <a class="btn btn-warning" (click)="appointment()">Appoitment</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="card" style="width:300px">
-                    <img class="card-img-top" src="../assets/img/doctor3.jpg" alt="Card image" style="width:100%">
-                    <div class="card-body">
-                        <h4 class="card-title">John Doe</h4>
-                        <p class="card-text">Some example text some example text. John Doe is an architect and
-                            engineer</p>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <a class="btn btn-primary" (click)="prescription()">Pricription</a>
-                            </div>
-                            <div class="col-lg-6">
-                                <a class="btn btn-warning" (click)="appointment()">Appoitment</a>
+        <!-- Doctor Cards -->
+        <div class="container" style="padding-bottom: 60px;">
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-6 mb-4" *ngFor="let doc of [
+          {name: 'Dr. John Doe', img: '../assets/img/doctor.jpg', desc: 'Specialist in general medicine and internal health care.'},
+          {name: 'Dr. Sarah Smith', img: '../assets/img/doctor2.jpg', desc: 'Expert in cardiology and heart-related treatments.'},
+          {name: 'Dr. Michael Chen', img: '../assets/img/doctor3.jpg', desc: 'Pediatrician with 15+ years of experience.'}
+        ]">
+                    <div class="card-modern" style="overflow: hidden;">
+                        <img [src]="doc.img" style="width: 100%; height: 220px; object-fit: cover;">
+                        <div style="padding: 24px;">
+                            <h5 style="font-weight: 700; margin-bottom: 8px;">{{doc.name}}</h5>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 16px;">
+                                {{doc.desc}}</p>
+                            <div class="row">
+                                <div class="col-6">
+                                    <button class="btn btn-branded"
+                                        style="width: 100%; font-size: 0.82rem; padding: 8px 12px;"
+                                        (click)="prescription()">Prescription</button>
+                                </div>
+                                <div class="col-6">
+                                    <button class="btn btn-accent"
+                                        style="width: 100%; font-size: 0.82rem; padding: 8px 12px;"
+                                        (click)="appointment(doc.name)">Appointment</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -111,313 +82,136 @@
     </div>
 
 
-    <!-- <br>
-    <div class="container justify-content-center">
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="card" style="width:300px">
-                    <img class="card-img-top" src="img_avatar1.png" alt="Card image" style="width:100%">
-                    <div class="card-body">
-                        <h4 class="card-title">John Doe</h4>
-                        <p class="card-text">Some example text some example text. John Doe is an architect and
-                            engineer</p>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <a href="#" class="btn btn-primary">Pricription</a>
-                            </div>
-                            <div class="col-lg-6">
-                                <a href="#" class="btn btn-warning">Appoitment</a>
-                            </div>
-                        </div>
+    <!-- Appointment Form -->
+    <div *ngIf="yesappointment == 'yes'" class="container section-padding form-modern">
+        <div class="section-header">
+            <h2>Book an Appointment</h2>
+            <p *ngIf="selectedDoctor" style="color: var(--text-secondary); margin-top: 8px;">with
+                <strong>{{selectedDoctor}}</strong>
+            </p>
+        </div>
+        <div class="card-modern" style="max-width: 700px; margin: 0 auto; padding: 40px;">
+            <form>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label>Full Name</label>
+                        <input type="text" class="form-control" placeholder="Enter your name"
+                            [(ngModel)]="appointment_data.fullname" name="fullname" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label>Blood Group</label>
+                        <input type="text" class="form-control" placeholder="Enter blood group"
+                            [(ngModel)]="appointment_data.bloodgroup" name="bloodgroup" required>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="card" style="width:300px">
-                    <img class="card-img-top" src="img_avatar1.png" alt="Card image" style="width:100%">
-                    <div class="card-body">
-                        <h4 class="card-title">John Doe</h4>
-                        <p class="card-text">Some example text some example text. John Doe is an architect and
-                            engineer</p>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <a href="#" class="btn btn-primary">Pricription</a>
-                            </div>
-                            <div class="col-lg-6">
-                                <a href="#" class="btn btn-warning">Appoitment</a>
-                            </div>
-                        </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label>Age</label>
+                        <input type="number" class="form-control" placeholder="Enter your age"
+                            [(ngModel)]="appointment_data.age" name="age" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label>Email</label>
+                        <input type="email" class="form-control" placeholder="Enter your email"
+                            [(ngModel)]="appointment_data.email" name="email" required>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="card" style="width:300px">
-                    <img class="card-img-top" src="img_avatar1.png" alt="Card image" style="width:100%">
-                    <div class="card-body">
-                        <h4 class="card-title">John Doe</h4>
-                        <p class="card-text">Some example text some example text. John Doe is an architect and
-                            engineer</p>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <a href="#" class="btn btn-primary">Pricription</a>
-                            </div>
-                            <div class="col-lg-6">
-                                <a href="#" class="btn btn-warning">Appoitment</a>
-                            </div>
-                        </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label>Phone Number</label>
+                        <input type="tel" class="form-control" placeholder="Enter phone number"
+                            [(ngModel)]="appointment_data.phone" name="phone">
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label>Preferred Date</label>
+                        <input type="date" class="form-control" [(ngModel)]="appointment_data.preferredDate"
+                            name="preferredDate">
                     </div>
                 </div>
-            </div>
-        </div>
-    </div> -->
-
-
-    <!-- <br>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="card" style="width:300px">
-                    <img class="card-img-top" src="img_avatar1.png" alt="Card image" style="width:100%">
-                    <div class="card-body">
-                        <h4 class="card-title">John Doe</h4>
-                        <p class="card-text">Some example text some example text. John Doe is an architect and
-                            engineer</p>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <a href="#" class="btn btn-primary">Pricription</a>
-                            </div>
-                            <div class="col-lg-6">
-                                <a href="#" class="btn btn-warning">Appoitment</a>
-                            </div>
-                        </div>
+                <div class="mb-3">
+                    <label>Preferred Time Slot</label>
+                    <select class="form-control p-1" [(ngModel)]="appointment_data.timeSlot" name="timeSlot">
+                        <option value="">Select Preferred Time Slot</option>
+                        <option>Morning: 9AM - 12PM</option>
+                        <option>Evening: 3PM - 5PM</option>
+                        <option>Night: 7PM - 10PM</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label>Gender</label>
+                    <div style="display: flex; gap: 20px; margin-top: 6px;">
+                        <label style="font-weight: 400; text-transform: none;"><input type="radio" name="gender"
+                                value="male" style="margin-right: 6px;"
+                                [(ngModel)]="appointment_data.gender">Male</label>
+                        <label style="font-weight: 400; text-transform: none;"><input type="radio" name="gender"
+                                value="female" style="margin-right: 6px;"
+                                [(ngModel)]="appointment_data.gender">Female</label>
+                        <label style="font-weight: 400; text-transform: none;"><input type="radio" name="gender"
+                                value="other" style="margin-right: 6px;" [(ngModel)]="appointment_data.gender">Prefer
+                            not to say</label>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="card" style="width:300px">
-                    <img class="card-img-top" src="img_avatar1.png" alt="Card image" style="width:100%">
-                    <div class="card-body">
-                        <h4 class="card-title">John Doe</h4>
-                        <p class="card-text">Some example text some example text. John Doe is an architect and
-                            engineer</p>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <a href="#" class="btn btn-primary">Pricription</a>
-                            </div>
-                            <div class="col-lg-6">
-                                <a href="#" class="btn btn-warning">Appoitment</a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="mb-4">
+                    <label>Brief Message</label>
+                    <textarea class="form-control" rows="3" placeholder="Describe your symptoms or concern..."
+                        [(ngModel)]="appointment_data.message" name="message"></textarea>
                 </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="card" style="width:300px">
-                    <img class="card-img-top" src="img_avatar1.png" alt="Card image" style="width:100%">
-                    <div class="card-body">
-                        <h4 class="card-title">John Doe</h4>
-                        <p class="card-text">Some example text some example text. John Doe is an architect and
-                            engineer</p>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <a href="#" class="btn btn-primary">Pricription</a>
-                            </div>
-                            <div class="col-lg-6">
-                                <a href="#" class="btn btn-warning">Appoitment</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <br> -->
-
-
-</body>
-
-
-
-<body class="row" style="padding: 80px 80px;" *ngIf="yesappointment == 'yes'">
-
-    <div class="container d-flex justify-content-center mb-2">
-        <div class="title p-3">Appointment Form</div>
-    </div>
-
-    <form>
-        <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" placeholder="Enter your name" required="">
-        </div>
-        <div class="form-group">
-            <label for="name">Blood Group</label>
-            <input type="text" class="form-control" id="name" placeholder="Enter your name" required="">
-        </div>
-        <div class="form-group">
-            <label for="Age">Age</label>
-            <input type="text" class="form-control" id="age" placeholder="Enter your age" required="">
-        </div>
-        <div class="form-group">
-            <label for="email">Email address</label>
-            <input type="email" class="form-control" id="email" placeholder="Enter your email" required="">
-        </div>
-        <div class="form-group">
-            <label for="phone">Phone number</label>
-            <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number">
-        </div>
-        <div class="form-group">
-            <label for="date">Preferred appointment date</label>
-            <input type="date" class="form-control" id="date">
-        </div>
-        <div class="form-group">
-            <label for="sel1">Preferred Time Slot</label>
-            <select class="form-control" id="sel1">
-                <option>Select Preferred Time Slot</option>
-                <option>Morning-:9AM-12AM</option>
-                <option>Evening-:3PM-5PM</option>
-                <option>Night-:7PM-10PM</option>
-            </select>
-        </div>
-        <div class="gender-details">
-            <label class="gender-title">Gender</label>
-            <div class="category">
-                <label for="dot-1">
-                    <input type="radio" class="form-check-input" name="optradio">
-                    <span class="gender">Male</span>
-                </label>
-                <label for="dot-2">
-                    <input type="radio" class="form-check-input" name="optradio">
-                    <span class="gender">Female</span>
-                </label>
-                <label for="dot-3">
-                    <input type="radio" class="form-check-input" name="optradio">
-                    <span class="gender">Prefer not to say</span>
-                </label>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="message">Brief message</label>
-            <textarea class="form-control" id="message" rows="3"></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-
-</body>
-
-
-
-<body class="row" style="margin-top: 56px;" *ngIf="yesprescription == 'yes'">
-
-
-    <div class="container d-flex justify-content-center mb-2">
-        <div class="title p-3">Prescription Form</div>
-    </div>
-
-    <div class="container-fluid py-4" style="justify-content: center;">
-        <div class="row" style="height: 300px; background-color: #7bc49f;">
-            <div class="col-lg-4">
-                <img class="img-responsive" src="../assets/img/Rx1.jpeg" alt="Chania" width="450" height="300"
-                    style="margin: 0px -15px;">
-            </div>
-            <div class="col-lg-8" style="background-color: aqua; line-height: 2.5rem;">
-                <br>
-                <h4><i class="fa-solid fa-arrow-right fa-beat" style="color: #005eff;"></i> What Are Medicines?</h4>
-                <h6 style="line-height: 1.5rem;">
-                    Medicines are chemicals or compounds used to cure, halt, or prevent
-                    disease; ease symptoms; or
-                    help
-                    in the
-                    diagnosis of illnesses.
-                    <br>
-                    Advances in medicines have enabled doctors to cure many diseases and save lives.These days,
-                    medicines come from a variety of sources. Many were developed from substances found in nature,
-                    and
-                    even today many are extracted from plants.Some medicines are made in labs by mixing together a
-                    number of chemicals. Others, like penicillin, are
-                    byproducts of organisms such as fungus.
-                    <br>
-                    And a few are even biologically engineered by inserting genes into
-                    bacteria that make them produce the desired substance.
-                </h6>
-            </div>
+                <button type="submit" class="btn btn-branded" (click)="submitAppointment()">Book Appointment</button>
+            </form>
         </div>
     </div>
 
-    <!-- <div class="container">
-        <h4><i class="fa-solid fa-square-check fa-beat-fade" style="color: #0088f0;"></i>
-            Tic the symptoms you have</h4>
-    </div> -->
 
-    <div class="container mt-5"
-        style="background-color: gold; width: 510px; padding: 20px 40px; height: 450px; border-radius: 30px; margin-bottom: 70px;">
-        <form class="p-3">
-            <div class="form-check">
-                <br>
-                <label class="form-check-label" for="check1">
-                    <input type="checkbox" class="form-check-input" id="check1" name="Fever" value="something">Fever
-                </label>
+    <!-- Prescription Form -->
+    <div *ngIf="yesprescription == 'yes'" class="container section-padding">
+        <div class="section-header">
+            <h2>Get Your Prescription</h2>
+        </div>
+
+        <!-- What are Medicines -->
+        <div class="card-modern" style="overflow: hidden; margin-bottom: 40px;">
+            <div class="row" style="margin: 0;">
+                <div class="col-lg-4" style="padding: 0;">
+                    <img src="../assets/img/Rx1.jpeg" alt="Medicines"
+                        style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="col-lg-8" style="padding: 30px; background: var(--surface-alt);">
+                    <h4 style="color: var(--primary); font-weight: 700; margin-bottom: 16px;">
+                        <i class="fas fa-arrow-right" style="margin-right: 8px;"></i> What Are Medicines?
+                    </h4>
+                    <p style="line-height: 1.8; color: var(--text-secondary);">
+                        Medicines are chemicals or compounds used to cure, halt, or prevent disease; ease symptoms; or
+                        help in the
+                        diagnosis of illnesses. Advances in medicines have enabled doctors to cure many diseases and
+                        save lives.
+                        Many medicines are developed from substances found in nature, while others are made in labs by
+                        mixing
+                        chemicals. Some, like penicillin, are byproducts of organisms such as fungus.
+                    </p>
+                </div>
             </div>
-            <div class="form-check">
-                <label class="form-check-label" for="check2">
-                    <input type="checkbox" class="form-check-input" id="check2" name="Diarrhea"
-                        value="something">Diarrhea
-                </label>
-            </div>
-            <div class="form-check">
-                <label class="form-check-label" for="check2">
-                    <input type="checkbox" class="form-check-input" id="check3" name="Fatigue" value="something">Fatigue
-                </label>
-            </div>
-            <div class="form-check">
-                <label class="form-check-label" for="check3">
-                    <input type="checkbox" class="form-check-input" id="check4" name="Muscle aches"
-                        value="something">Muscle
-                    aches
-                </label>
-            </div>
-            <div class="form-check">
-                <label class="form-check-label" for="check4">
-                    <input type="checkbox" class="form-check-input" id="check5" name="Coughing"
-                        value="something">Coughing
-                </label>
-            </div>
-            <div class="form-check">
-                <label class="form-check-label" for="check5">
-                    <input type="checkbox" class="form-check-input" id="check6" name="Stomach Aches."
-                        value="something">Stomach
-                    Aches.
-                </label>
-            </div>
-            <div class="form-check">
-                <label class="form-check-label" for="check6">
-                    <input type="checkbox" class="form-check-input" id="check7" name="Headaches"
-                        value="something">Headaches
-                </label>
-            </div>
-            <div class="form-check">
-                <label class="form-check-label" for="check7">
-                    <input type="checkbox" class="form-check-input" id="check8" name="Colds and Flu"
-                        value="something">Colds and
-                    Flu
-                </label>
-            </div>
-            <div class="form-check">
-                <label class="form-check-label" for="check2">
-                    <input type="checkbox" class="form-check-input" id="check9" name="Vomiting."
-                        value="something">Vomiting.
-                </label>
-            </div>
-            <div class="form-check">
-                <label class="form-check-label" for="check2">
-                    <input type="checkbox" class="form-check-input" id="check10" name="Chickenpox."
-                        value="something">Chickenpox.
-                </label>
-            </div>
-            <br>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-        <br>
+        </div>
+
+        <!-- Symptom Checker -->
+        <div class="card-modern" style="max-width: 550px; margin: 0 auto; padding: 40px;">
+            <h5 style="font-weight: 700; margin-bottom: 20px; text-align: center;">
+                <i class="fas fa-stethoscope" style="color: var(--primary); margin-right: 8px;"></i>
+                Select Your Symptoms
+            </h5>
+            <form>
+                <div *ngFor="let symptom of ['Fever', 'Diarrhea', 'Fatigue', 'Muscle Aches', 'Coughing', 'Stomach Aches', 'Headaches', 'Colds and Flu', 'Vomiting', 'Chickenpox']"
+                    style="margin-bottom: 10px;">
+                    <label
+                        style="display: flex; align-items: center; cursor: pointer; padding: 8px 12px; border-radius: var(--radius-sm); transition: var(--transition); font-weight: 400; text-transform: none; font-size: 0.95rem;">
+                        <input type="checkbox" [name]="symptom"
+                            style="margin-right: 12px; width: 18px; height: 18px; accent-color: var(--primary);">
+                        {{symptom}}
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-branded" style="width: 100; margin-top: 10px;"
+                    (click)="submitPrescription()">Get Prescription</button>
+            </form>
+        </div>
     </div>
 
-
-</body>
+</div>

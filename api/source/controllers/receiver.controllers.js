@@ -1,9 +1,8 @@
 const Receivers = require('../models/receiver');
-const errorResponse = require('../utils/responseHelpers');
-const successResponse = require('../utils/responseHelpers');
+const { errorResponse, successResponse } = require('../utils/responseHelpers');
 
 
-export const createReceiver = async (req, res) => {
+const createReceiver = async (req, res) => {
     try {
         const receiver = new Receivers(req.body);
         await receiver.save();
@@ -15,7 +14,7 @@ export const createReceiver = async (req, res) => {
 }
 
 
-export const getReceiverById = async (req, res) => {
+const getReceiverById = async (req, res) => {
     try {
         const receiverId = req.params.id;
         const receiver = await Receivers.findById(receiverId);
@@ -30,7 +29,7 @@ export const getReceiverById = async (req, res) => {
 }
 
 
-export const getAllReceivers = async (req, res) => {
+const getAllReceivers = async (req, res) => {
     try {
         const receivers = await Receivers.find();
         return successResponse(res, 200, "Receivers retrieved successfully", receivers);
@@ -41,7 +40,7 @@ export const getAllReceivers = async (req, res) => {
 }
 
 
-export const updateReceiver = async (req, res) => {
+const updateReceiver = async (req, res) => {
     try {
         const receiverId = req.params.id;
         const updates = req.body;
@@ -57,7 +56,7 @@ export const updateReceiver = async (req, res) => {
 }
 
 
-export const deleteReceiver = async (req, res) => {
+const deleteReceiver = async (req, res) => {
     try {
         const receiverId = req.params.id;
         const receiver = await Receivers.findByIdAndDelete(receiverId);
@@ -70,3 +69,5 @@ export const deleteReceiver = async (req, res) => {
         return errorResponse(res, 500, "Server Error");
     }
 }
+
+module.exports = { createReceiver, getReceiverById, getAllReceivers, updateReceiver, deleteReceiver };

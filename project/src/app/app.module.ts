@@ -10,17 +10,16 @@ import { ServicesComponent } from './donor/services.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AdminComponent } from './admin/admin.component';
 import { DonationCampComponent } from './donation-camp/donation-camp.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReceiverComponent } from './receiver/receiver.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { LogoutComponent } from './logout/logout.component';
 import { PharmacyComponent } from './pharmacy/pharmacy.component';
 import { OrdermedicineComponent } from './ordermedicine/ordermedicine.component';
 import { DoctorComponent } from './doctor/doctor.component';
-import { LogoutcampComponent } from './logoutcamp/logoutcamp.component';
 import { InformationComponent } from './information/information.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -35,11 +34,9 @@ import { InformationComponent } from './information/information.component';
     ReceiverComponent,
     RegistrationComponent,
     LoginComponent,
-    LogoutComponent,
     PharmacyComponent,
     OrdermedicineComponent,
     DoctorComponent,
-    LogoutcampComponent,
     InformationComponent
   ],
   imports: [
@@ -50,7 +47,13 @@ import { InformationComponent } from './information/information.component';
     HttpClientModule,
     Ng2SearchPipeModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

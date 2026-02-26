@@ -1,49 +1,59 @@
 const mongoose = require("mongoose");
-const validator = require("validator");
 
-
-const medSchema = new mongoose.Schema({
+const orderSchema = new mongoose.Schema({
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
+    items: [{
+        name: { type: String, required: true },
+        price: { type: Number, required: true },
+        qty: { type: String }
+    }],
+    totalPrice: {
+        type: Number,
+        required: true
+    },
     name: {
         type: String,
-        required: true,
-        minlength: 2
+        required: true
     },
     email: {
         type: String,
-        required: true,
-        unique:[true, "Email id already present"],
-        validate(value){
-            if(!validator.isEmail(value)){
-                throw new Error("Invalid Email")
-            }
-        }
+        required: true
     },
     phone: {
         type: Number,
-        min: 10,
-        required: true,
-        unique: true
-    },
-    pin: {
-        type: Number,
-        required: true,
-    },
-    city: {
-        type: String,
-        required: true,
-    },
-    state: {
-        type: String,
-        required: true,
+        required: true
     },
     address: {
         type: String,
         required: true
+    },
+    city: {
+        type: String,
+        required: true
+    },
+    state: {
+        type: String,
+        required: true
+    },
+    pin: {
+        type: Number,
+        required: true
+    },
+    status: {
+        type: String,
+        enum: ['pending', 'confirmed', 'delivered', 'cancelled'],
+        default: 'pending'
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
     }
+});
 
-})
-
-
-const Order = mongoose.model('Order', medSchema);
+const Order = mongoose.model('Order', orderSchema);
 
 module.exports = Order;

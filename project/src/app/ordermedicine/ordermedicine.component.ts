@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { OrderService } from '../services/order.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-ordermedicine',
@@ -8,7 +10,6 @@ import Swal from 'sweetalert2';
   styleUrls: ['./ordermedicine.component.scss']
 })
 export class OrdermedicineComponent implements OnInit {
-
 
   @ViewChild('userForm')
   userForm!: NgForm;
@@ -18,7 +19,6 @@ export class OrdermedicineComponent implements OnInit {
   cart: any = [];
   totalprice = 0;
 
-
   cartlist: any = [
     {
       img: "../assets/img/WhatsApp Image 2023-03-24 at 3.36.09 PM (1).jpeg",
@@ -26,56 +26,48 @@ export class OrdermedicineComponent implements OnInit {
       qty: "15 Tablet(s) in Strip.",
       price: 49.41
     },
-
     {
       img: "../assets/img/WhatsApp Image 2023-03-24 at 3.36.13 PM (1).jpeg",
       Name: "VPrime Bone Plus Capsule (500 mg)",
       qty: "30 Tablet(s) in Bottle.",
       price: 897
     },
-
     {
       img: "../assets/img/WhatsApp Image 2023-03-24 at 3.36.10 PM.jpeg",
       Name: "Dolo (Paracetamol) 650mg Strip Of 15 Tablets",
       qty: "15 Tablet(s) in Strip.",
       price: 25.41
     },
-
     {
       img: "../assets/img/WhatsApp Image 2023-03-24 at 3.36.13 PM.jpeg",
       Name: "Alograce Vitamin E,Honey,Aloe Vera Cream.",
       qty: "50gm in a Tube",
       price: 133.76
     },
-
     {
       img: "../assets/img/WhatsApp Image 2023-03-24 at 3.40.15 PM.jpeg",
       Name: "Evion 400mg Strip Of 10 Capsules",
       qty: "15 Tablet(s) in Strip.",
       price: 34.1
     },
-
     {
       img: "../assets/img/digine.jpeg",
-      Name: "Digene Acidity &amp; Gas Relief Tablets 15s- Mint Flavour",
+      Name: "Digene Acidity & Gas Relief Tablets 15s - Mint Flavour",
       qty: "Strip of (15) tablets.",
       price: 22.93
     },
-
     {
       img: "../assets/img/WhatsApp Image 2023-03-24 at 3.36.12 PM.jpeg",
       Name: "Orasore INSTANT PAIN RELIEF Mouth Ulcer Gel",
       qty: "25gm in a Tube",
       price: 149.93
     },
-
     {
       img: "../assets/img/WhatsApp Image 2023-03-24 at 3.36.12 PM (1).jpeg",
-      Name: "Saridon Headache Relief Tablet- Strip Of 10 Tablets.",
+      Name: "Saridon Headache Relief Tablet - Strip Of 10 Tablets.",
       qty: "10 Tablet(s) in Strip.",
       price: 38.92
     },
-
     {
       img: "../assets/img/WhatsApp Image 2023-03-24 at 3.36.11 PM (2).jpeg",
       Name: "HIMALAYA LIV-52-DS-TABLETS-60",
@@ -84,8 +76,11 @@ export class OrdermedicineComponent implements OnInit {
     }
   ];
 
-
-  constructor(private formbuilder: FormBuilder) {
+  constructor(
+    private formbuilder: FormBuilder,
+    private orderService: OrderService,
+    private authService: AuthService
+  ) {
     this.orderForm = this.formbuilder.group({
       name: [''],
       email: [''],
@@ -94,41 +89,99 @@ export class OrdermedicineComponent implements OnInit {
       pin: [''],
       city: [''],
       state: ['']
-    })
+    });
   }
-
-
-  order(data: any) {
-  }
-
 
   ngOnInit(): void {
   }
 
+  order(data: any) {
+    if (this.cart.length === 0) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Cart is Empty',
+        text: 'Please add items to your cart before placing an order.',
+        confirmButtonColor: '#c62828'
+      });
+      return;
+    }
+
+    if (!this.authService.isLoggedIn()) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Login Required',
+        text: 'Please login to place an order.',
+        confirmButtonColor: '#c62828'
+      }).then(() => {
+        window.location.href = '/login';
+      });
+      return;
+    }
+
+    const orderData = {
+      ...data,
+      items: this.cart.map((item: any) => ({
+        name: item.Name,
+        price: item.price,
+        qty: item.qty
+      })),
+      totalPrice: this.totalprice
+    };
+
+    this.orderService.createOrder(orderData).subscribe({
+      next: (res: any) => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Order Placed Successfully!',
+          html: `Your order of <strong>₹${this.totalprice.toFixed(2)}</strong> has been placed.<br>Order ID: <code>${res.data?._id || 'N/A'}</code>`,
+          confirmButtonColor: '#c62828'
+        }).then(() => {
+          this.cart = [];
+          this.totalprice = 0;
+          this.isbuy = '';
+          if (this.userForm) {
+            this.userForm.reset();
+          }
+        });
+      },
+      error: (err) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Order Failed',
+          text: err.error?.message || 'Something went wrong. Please try again.',
+          confirmButtonColor: '#c62828'
+        });
+      }
+    });
+  }
 
   buy() {
     this.isbuy = 'yes';
   }
-
 
   addtocart(i: any) {
     this.cart.push(this.cartlist[i]);
     this.totalprice = 0;
     this.cart.forEach((element: any) => {
       this.totalprice = this.totalprice + element.price;
-    })
+    });
+    Swal.fire({
+      icon: 'success',
+      title: 'Added to Cart!',
+      text: this.cartlist[i].Name,
+      showConfirmButton: false,
+      timer: 1200,
+      position: 'top-end',
+      toast: true
+    });
   }
-
 
   clearcart() {
     this.cart = [];
     this.totalprice = 0;
   }
 
-
   clear() {
     this.userForm.reset();
   }
-
-
 }

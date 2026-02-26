@@ -12,7 +12,7 @@ export class ReceiverService {
     baseUrl = environment.production ? environment.productionUrl : environment.apiUrl;
 
     getAllReceivers() {
-        return this.http.get(`${this.baseUrl}/receivers`);
+        return this.http.get(`${this.baseUrl}/donors`);
     }
 
     getReceiverById(id: string) {
