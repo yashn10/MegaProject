@@ -9,7 +9,7 @@ export class ReceiverService {
 
     constructor(private http: HttpClient) { }
 
-    baseUrl = environment.production ? environment.productionUrl : environment.apiUrl;
+    baseUrl = "https://megaproject-9885.onrender.com/api";
 
     getAllReceivers() {
         return this.http.get(`${this.baseUrl}/donors`);

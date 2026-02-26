@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
 })
 export class OrderService {
 
-    baseUrl = environment.production ? environment.productionUrl : environment.apiUrl;
+    baseUrl = "https://megaproject-9885.onrender.com/api";
 
     constructor(private http: HttpClient) { }
 

@@ -10,7 +10,7 @@ export class AuthService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  baseUrl = environment.production ? environment.productionUrl : environment.apiUrl;
+  baseUrl = "https://megaproject-9885.onrender.com/api";
 
   login(data: any) {
     return this.http.post(`${this.baseUrl}/auth/login`, data);
