@@ -26,16 +26,18 @@ export class ContactComponent {
         this.contactList.push(res);
         Swal.fire({
           icon: 'success',
-          title: 'Contact Added Successfully',
-          showConfirmButton: true,
+          title: 'Message Sent!',
+          text: 'Thank you for reaching out. We will get back to you soon.',
+          confirmButtonColor: '#c62828'
         });
       },
       error: (err) => {
         console.log(err);
         Swal.fire({
           icon: 'error',
-          title: 'Failed to Add Contact',
-          showConfirmButton: true,
+          title: 'Failed to Send',
+          text: 'Something went wrong. Please try again.',
+          confirmButtonColor: '#c62828'
         });
       }
     });

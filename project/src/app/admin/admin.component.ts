@@ -38,7 +38,7 @@ export class AdminComponent implements OnInit {
             icon: 'error',
             title: 'Access Denied',
             text: 'This account does not have admin privileges.',
-            showConfirmButton: true,
+            confirmButtonColor: '#c62828'
           });
           return;
         }
@@ -47,7 +47,8 @@ export class AdminComponent implements OnInit {
         Swal.fire({
           icon: 'success',
           title: 'Admin Login Successful',
-          showConfirmButton: true,
+          text: 'Welcome, Admin!',
+          confirmButtonColor: '#c62828'
         }).then(() => {
           this.router.navigate(['/dashboard']);
         });
@@ -55,9 +56,9 @@ export class AdminComponent implements OnInit {
       error: (err) => {
         Swal.fire({
           icon: 'error',
-          title: err.error.message || 'Login Failed',
+          title: err.error?.message || 'Login Failed',
           text: 'Please check your credentials and try again.',
-          showConfirmButton: true,
+          confirmButtonColor: '#c62828'
         });
         console.log(err);
       }

@@ -38,7 +38,8 @@ export class LoginComponent implements OnInit {
         Swal.fire({
           icon: 'success',
           title: 'Login Successful',
-          showConfirmButton: true,
+          text: 'Welcome back!',
+          confirmButtonColor: '#c62828'
         }).then(() => {
           this.router.navigate(['/dashboard']);
         });
@@ -46,9 +47,9 @@ export class LoginComponent implements OnInit {
       error: (err) => {
         Swal.fire({
           icon: 'error',
-          title: err.error.message || 'Login Failed',
+          title: err.error?.message || 'Login Failed',
           text: 'Please check your email and password and try again.',
-          showConfirmButton: true,
+          confirmButtonColor: '#c62828'
         });
         console.log(err);
       }

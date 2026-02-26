@@ -83,33 +83,24 @@ export class DonationCampComponent implements OnInit {
 
 
   register() {
-    const swalWithBootstrapButtons = Swal.mixin({
-      customClass: {
-        confirmButton: 'btn btn-success',
-        cancelButton: 'btn btn-danger'
-      },
-      buttonsStyling: false
-    });
-    swalWithBootstrapButtons.fire({
-      title: 'Are you sure to register in this camp for further activities. After clicking "yes" all your important information will be transferred with the camp owner.',
-      icon: 'warning',
+    Swal.fire({
+      title: 'Register for this Camp?',
+      text: 'Your contact information will be shared with the camp organizer so they can reach out to you.',
+      icon: 'question',
       showCancelButton: true,
-      confirmButtonText: 'Yes, register!',
-      cancelButtonText: 'No, cancel!',
+      confirmButtonColor: '#c62828',
+      cancelButtonColor: '#9e9e9e',
+      confirmButtonText: '<i class="fas fa-check"></i> Yes, Register',
+      cancelButtonText: 'Cancel',
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
-        swalWithBootstrapButtons.fire(
-          'Successfull!',
-          'Your registration has been successfull. You can visit to the camp anytime between active hours or our camp administration will contact you soon.',
-          'success'
-        );
-      } else if (result.dismiss === Swal.DismissReason.cancel) {
-        swalWithBootstrapButtons.fire(
-          'Cancelled',
-          'Your registration is cancelled',
-          'error'
-        );
+        Swal.fire({
+          icon: 'success',
+          title: 'Registration Successful!',
+          html: 'You have been registered for this camp.<br><small style="color:#616161;">The camp organizer will contact you soon with further details.</small>',
+          confirmButtonColor: '#c62828'
+        });
       }
     });
   }

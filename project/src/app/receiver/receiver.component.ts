@@ -48,8 +48,9 @@ export class ReceiverComponent implements OnInit {
       error: (err) => {
         Swal.fire({
           icon: 'error',
-          title: 'Oops...',
-          text: 'Something went wrong!',
+          title: 'Failed to Load Donors',
+          text: 'Could not fetch donor data. Please try again later.',
+          confirmButtonColor: '#c62828'
         });
         console.log(err);
       }

@@ -22,30 +22,29 @@ export class ServicesComponent {
   addDonor(data: any) {
     if (!this.authService.isLoggedIn()) {
       Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Something went wrong!',
-        footer: 'User login required to register for blood donation'
+        icon: 'warning',
+        title: 'Login Required',
+        text: 'Please login to register as a blood donor.',
+        confirmButtonColor: '#c62828'
       });
       return;
     }
     this.donorService.createDonor(data).subscribe({
       next: (res) => {
         Swal.fire({
-          position: 'top-end',
           icon: 'success',
-          title: 'Your data has been saved',
-          showConfirmButton: false,
-          timer: 2000
+          title: 'Donor Registered!',
+          text: 'You have been successfully registered as a blood donor. Thank you for your contribution!',
+          confirmButtonColor: '#c62828'
         });
         this.userForm.reset();
       },
       error: (err) => {
         Swal.fire({
           icon: 'error',
-          title: 'Oops...',
-          text: 'Something went wrong!',
-          footer: 'Error from server side'
+          title: 'Registration Failed',
+          text: err.error?.message || 'An error occurred. Please check your details and try again.',
+          confirmButtonColor: '#c62828'
         });
         console.log(err);
       }

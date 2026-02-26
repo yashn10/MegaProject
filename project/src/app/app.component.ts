@@ -29,11 +29,14 @@ export class AppComponent implements OnInit {
 
   performLogout() {
     Swal.fire({
-      title: 'Are you sure you want to logout?',
-      icon: 'warning',
+      title: 'Logout?',
+      text: 'Are you sure you want to sign out?',
+      icon: 'question',
       showCancelButton: true,
-      confirmButtonText: 'Yes, logout',
-      cancelButtonText: 'No, stay logged in'
+      confirmButtonColor: '#c62828',
+      cancelButtonColor: '#9e9e9e',
+      confirmButtonText: 'Yes, Logout',
+      cancelButtonText: 'Cancel'
     }).then((result) => {
       if (result.isConfirmed) {
         this.authService.logout().subscribe({
@@ -41,8 +44,9 @@ export class AppComponent implements OnInit {
             this.authService.clearSession();
             Swal.fire({
               icon: 'success',
-              title: 'Logged Out Successfully',
-              showConfirmButton: true,
+              title: 'Logged Out',
+              text: 'You have been signed out successfully.',
+              confirmButtonColor: '#c62828',
             }).then(() => {
               this.router.navigate(['/home']);
             });

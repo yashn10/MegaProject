@@ -39,7 +39,8 @@ export class RegistrationComponent {
         Swal.fire({
           icon: 'success',
           title: 'Registration Successful',
-          text: 'You have been registered successfully!',
+          text: 'Your account has been created. Redirecting to login...',
+          confirmButtonColor: '#c62828'
         }).then(() => {
           this.router.navigate(['/login']);
         });
@@ -47,7 +48,8 @@ export class RegistrationComponent {
         Swal.fire({
           icon: 'error',
           title: 'Registration Failed',
-          text: 'An error occurred during registration. Please try again.',
+          text: err.error?.message || 'An error occurred. Please check your details and try again.',
+          confirmButtonColor: '#c62828'
         });
       }
     });
